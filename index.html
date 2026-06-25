@@ -1,0 +1,2533 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepMaster - CBT Computer Fundamentals Exam</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config for Theme Support -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-brand-600 text-white rounded-xl shadow-lg shadow-brand-500/20">
+                    <i data-lucide="laptop" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent">PrepMaster</span>
+                    <span class="text-xs block text-slate-400 font-medium">CBT Simulator</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:scale-105 active:scale-95 transition-all text-slate-600 dark:text-slate-300" aria-label="Toggle Theme">
+                    <i data-lucide="sun" id="theme-sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" id="theme-moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                
+                <!-- User Profile / Admin Button -->
+                <div id="user-nav-profile" class="hidden flex items-center gap-3 pl-3 border-l border-slate-200 dark:border-slate-800">
+                    <div class="text-right hidden sm:block">
+                        <span id="nav-username" class="text-sm font-semibold block">Guest</span>
+                        <span id="nav-role" class="text-xs text-brand-600 dark:text-brand-400 font-medium capitalize">Student</span>
+                    </div>
+                    <button id="logout-btn" class="p-2.5 bg-rose-50 text-rose-600 dark:bg-rose-950/30 dark:text-rose-400 rounded-xl hover:bg-rose-100 transition-colors active:scale-95" title="Sign Out">
+                        <i data-lucide="log-out" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- App Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        
+        <!-- ================= LOGIN SCREEN ================= -->
+        <section id="screen-login" class="max-w-md mx-auto my-12 animate-fade-in">
+            <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl"></div>
+                
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2">Welcome Back</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Sign in to begin your computer fundamental evaluation</p>
+                </div>
+
+                <form id="login-form" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Username</label>
+                        <div class="relative">
+                            <i data-lucide="user" class="absolute left-3.5 top-3 w-5 h-5 text-slate-400"></i>
+                            <input type="text" id="login-username" required placeholder="Enter your full name" 
+                                class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all text-sm text-slate-900 dark:text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Password</label>
+                        <div class="relative">
+                            <i data-lucide="lock" class="absolute left-3.5 top-3 w-5 h-5 text-slate-400"></i>
+                            <input type="password" id="login-password" required placeholder="••••••••" 
+                                class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition-all text-sm text-slate-900 dark:text-white">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-lg shadow-brand-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                        Get Started <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-900 text-center">
+                    <button onclick="bypassToAdmin()" class="text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline">Access Admin Portal directly</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HOME SCREEN ================= -->
+        <section id="screen-home" class="hidden space-y-8 animate-fade-in">
+            <!-- Hello Banner -->
+            <div class="bg-gradient-to-r from-brand-600 to-indigo-600 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl">
+                <div class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 opacity-10">
+                    <i data-lucide="cpu" class="w-96 h-96"></i>
+                </div>
+                <div class="relative z-10 space-y-3 max-w-2xl">
+                    <span class="px-3 py-1 bg-white/20 text-xs font-bold uppercase tracking-wider rounded-full">Fundamentals of Computer MCQ</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to boost your computer knowledge, <span id="welcome-name">Student</span>?</h1>
+                    <p class="text-brand-100 text-sm sm:text-base leading-relaxed">Prepare yourself with 100 high-yield questions on CPU architecture, computer history, generations of memory chips, and processing methodologies.</p>
+                </div>
+            </div>
+
+            <!-- Stats/Highlights Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+                    <div class="p-3 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-xl"><i data-lucide="award" class="w-6 h-6"></i></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Total Questions</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">100 MCQs</span></div>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+                    <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-xl"><i data-lucide="clock" class="w-6 h-6"></i></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Exam Duration</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">45 Minutes</span></div>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+                    <div class="p-3 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-xl"><i data-lucide="check-circle" class="w-6 h-6"></i></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Marks Weight</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">2 Marks each</span></div>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+                    <div class="p-3 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 rounded-xl"><i data-lucide="percent" class="w-6 h-6"></i></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Max Score possible</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">200 Marks</span></div>
+                </div>
+            </div>
+
+            <!-- Mode Chooser -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Mode 1: Exam -->
+                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-brand-500 hover:shadow-lg transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="p-4 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-2xl group-hover:scale-110 transition-transform">
+                                <i data-lucide="file-text" class="w-8 h-8"></i>
+                            </div>
+                            <span class="px-3 py-1 bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 text-xs font-bold rounded-full">Strict Rules</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Exam Simulator Mode</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Run a strict exam environment. Shuffle all questions, lock a 45-minute countdown, navigate back and forth, bookmark issues for review, and submit for automatic instant evaluation.</p>
+                    </div>
+                    <button id="start-exam-btn" class="mt-6 w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Launch Exam Mode <i data-lucide="play-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Mode 2: Practice -->
+                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform">
+                                <i data-lucide="sparkles" class="w-8 h-8"></i>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 text-xs font-bold rounded-full">Self-Paced</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Interactive Practice Mode</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice at your own speed with no ticking clocks. Choose your range of questions, receive instant visual correction, explanations, and track progress interactively.</p>
+                    </div>
+                    <button id="start-practice-btn" class="mt-6 w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Launch Practice Mode <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <p class="text-xs text-slate-500">Need to check candidate results or edit parameters?</p>
+                <div class="flex items-center gap-3">
+                    <button id="trigger-admin-btn" class="px-4 py-2 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-brand-500"></i> Admin Dashboard
+                    </button>
+                    <button id="show-history-btn" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
+                        <i data-lucide="history" class="w-4 h-4 text-indigo-500"></i> Your Score History
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= EXAM WORKSPACE SCREEN ================= -->
+        <section id="screen-exam" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 animate-fade-in">
+            <!-- Left Col: Question, Options, Flow -->
+            <div class="lg:col-span-8 space-y-6">
+                <!-- Top Status Panel -->
+                <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-mode" class="px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-brand-50 text-brand-600">Exam Mode</span>
+                        <span class="text-xs text-slate-400 font-semibold hidden sm:inline" id="exam-progress-text">Question 1 of 100</span>
+                    </div>
+                    <!-- Time Tracker -->
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 rounded-xl font-mono font-bold" id="exam-timer-wrapper">
+                        <i data-lucide="hourglass" class="w-4 h-4 animate-spin"></i>
+                        <span id="exam-timer">45:00</span>
+                    </div>
+                </div>
+
+                <!-- Main Card Question -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 relative overflow-hidden">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs text-brand-500 dark:text-brand-400 font-bold uppercase tracking-wider">Question Identifier <span id="q-id-num">1</span></span>
+                            <h2 id="q-text" class="text-lg sm:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">Loading question content...</h2>
+                        </div>
+                        <button id="flag-btn" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all flex-shrink-0" title="Flag/Bookmark question">
+                            <i data-lucide="bookmark" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Answer Option List -->
+                    <div id="options-container" class="space-y-3.5">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- Practice Mode Explanation Panel -->
+                    <div id="explanation-panel" class="hidden p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-2xl animate-fade-in">
+                        <div class="flex items-start gap-3">
+                            <div class="p-1.5 bg-emerald-500 text-white rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-emerald-800 dark:text-emerald-400">Correct Answer Explanation</h4>
+                                <p id="explanation-text" class="text-xs mt-1 text-slate-600 dark:text-slate-300">Detailed logic concerning the correct response is displayed dynamically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nav Controls -->
+                <div class="flex items-center justify-between gap-4">
+                    <button id="prev-q-btn" class="flex-1 py-3.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 active:scale-95">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i> Previous
+                    </button>
+                    <button id="next-q-btn" class="flex-1 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-95">
+                        Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Col: Quiz Grid Navigator -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Grid Map Card -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-sm">Question Navigation Map</h4>
+                        <span id="answered-count-badge" class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-xs font-bold rounded-lg">0 / 100</span>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-300"></span> Unanswered</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 bg-brand-500 rounded-full"></span> Answered</div>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span> Flagged</div>
+                    </div>
+
+                    <!-- Navigation Grid Scroller -->
+                    <div id="navigation-grid" class="grid grid-cols-5 xs:grid-cols-6 sm:grid-cols-10 lg:grid-cols-5 gap-2 max-h-64 overflow-y-auto pr-1">
+                        <!-- Numbers generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Submit / Quit Buttons -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-3">
+                    <button id="submit-exam-btn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="check-square" class="w-5 h-5"></i> Submit Examination
+                    </button>
+                    <button id="quit-exam-btn" class="w-full py-3 hover:bg-rose-50 dark:hover:bg-rose-950/20 text-rose-600 rounded-xl font-bold text-xs transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="x-circle" class="w-4 h-4"></i> Quit Mode & Exit
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RESULTS & ANALYSIS SCREEN ================= -->
+        <section id="screen-results" class="hidden space-y-8 animate-fade-in">
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- Congrats Card -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-xl relative overflow-hidden text-center space-y-6">
+                    <div class="absolute -top-12 -left-12 w-44 h-44 bg-brand-500/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-12 -right-12 w-44 h-44 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="mx-auto w-16 h-16 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="trophy" class="w-10 h-10"></i>
+                    </div>
+
+                    <div class="space-y-2 relative z-10">
+                        <h2 class="text-3xl font-extrabold tracking-tight">Exam Complete!</h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Here is a deep dive analysis of your performance.</p>
+                    </div>
+
+                    <!-- Canvas Score badge -->
+                    <div class="flex justify-center py-2">
+                        <canvas id="scoreCanvas" width="160" height="160" class="mx-auto rounded-full"></canvas>
+                    </div>
+
+                    <!-- Numeric statistics breakdown -->
+                    <div class="grid grid-cols-3 gap-4 py-4 max-w-md mx-auto border-y border-slate-100 dark:border-slate-900">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">Score</span>
+                            <span class="text-lg font-extrabold" id="res-score">180 / 200</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">Percentage</span>
+                            <span class="text-lg font-extrabold text-brand-600 dark:text-brand-400" id="res-percentage">90%</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">Grade</span>
+                            <span class="text-lg font-extrabold" id="res-grade">Excellent</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-xs max-w-sm mx-auto">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                            <span class="text-slate-400 block">Total Correct Answers</span>
+                            <strong class="text-emerald-600 text-sm font-extrabold" id="res-correct">45</strong>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl">
+                            <span class="text-slate-400 block">Wrong/Skipped Answers</span>
+                            <strong class="text-rose-600 text-sm font-extrabold" id="res-wrong">5</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation options -->
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <button id="review-answers-btn" class="w-full sm:flex-1 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-all">
+                        <i data-lucide="eye" class="w-4 h-4"></i> Review Questions & Answers
+                    </button>
+                    <button id="restart-home-btn" class="w-full sm:flex-1 py-3.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95">
+                        <i data-lucide="home" class="w-4 h-4"></i> Back to Home Lobby
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DETAILED ANSWER REVIEW SCREEN ================= -->
+        <section id="screen-review" class="hidden space-y-6 animate-fade-in">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl font-extrabold tracking-tight">Answer Review</h2>
+                    <p class="text-slate-400 text-xs mt-1">Scroll through all questions to review your answers.</p>
+                </div>
+                <button id="exit-review-btn" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition-all hover:bg-slate-200">
+                    Exit Review
+                </button>
+            </div>
+
+            <div id="review-list-container" class="space-y-6">
+                <!-- JavaScript renders detailed list view -->
+            </div>
+        </section>
+
+        <!-- ================= USER PERFORMANCE HISTORY SCREEN ================= -->
+        <section id="screen-history" class="hidden space-y-6 animate-fade-in max-w-3xl mx-auto">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="flex items-center gap-3">
+                    <button id="back-from-history-btn" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-600 dark:text-slate-200"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <div>
+                        <h2 class="text-2xl font-extrabold tracking-tight">Attempt History</h2>
+                        <p class="text-slate-400 text-xs mt-0.5">Summary of all logged evaluations completed locally.</p>
+                    </div>
+                </div>
+                <button id="clear-history-btn" class="px-3.5 py-2 text-rose-600 bg-rose-50 dark:bg-rose-950/20 text-xs font-bold rounded-xl hover:bg-rose-100">Clear Records</button>
+            </div>
+
+            <!-- Historical Performance Charts -->
+            <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-4">
+                <h4 class="font-bold text-sm">Visual Performance Trend</h4>
+                <canvas id="trendCanvas" height="150" class="w-full bg-slate-50 dark:bg-slate-900 rounded-2xl p-2"></canvas>
+            </div>
+
+            <div id="history-table-container" class="space-y-4">
+                <!-- Records injected by JS -->
+            </div>
+        </section>
+
+        <!-- ================= ADMIN DASHBOARD SCREEN ================= -->
+        <section id="screen-admin" class="hidden space-y-8 animate-fade-in">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
+                <div>
+                    <h2 class="text-3xl font-extrabold tracking-tight flex items-center gap-2">
+                        <i data-lucide="shield-check" class="text-brand-500 w-8 h-8"></i> Admin Console
+                    </h2>
+                    <p class="text-slate-400 text-xs mt-0.5">Control the exam environment and review analytics data instantly.</p>
+                </div>
+                <button id="exit-admin-btn" class="px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-extrabold hover:bg-slate-200">
+                    Exit Admin Console
+                </button>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Total Submissions</span>
+                    <strong class="text-2xl font-extrabold" id="admin-total-subs">12</strong>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Average Score</span>
+                    <strong class="text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="admin-avg-score">142 / 200</strong>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Pass Rate (>= 50%)</span>
+                    <strong class="text-2xl font-extrabold text-emerald-500" id="admin-pass-rate">85%</strong>
+                </div>
+                <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Highest Score</span>
+                    <strong class="text-2xl font-extrabold text-indigo-500" id="admin-max-score">196 / 200</strong>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- System Config -->
+                <div class="lg:col-span-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-6">
+                    <h3 class="text-lg font-bold">Simulator Controls</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Timer Configuration (Minutes)</label>
+                            <input type="number" id="admin-timer-input" min="5" max="180" value="45" class="w-full px-3.5 py-2 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-900 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Passing Threshold (%)</label>
+                            <input type="number" id="admin-pass-input" min="30" max="90" value="50" class="w-full px-3.5 py-2 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-900 text-sm">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Enable Question Shuffling</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="admin-shuffle-check" checked class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="save-settings-btn" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold shadow transition-all">
+                        Update Simulator Parameters
+                    </button>
+                </div>
+
+                <!-- Database Log -->
+                <div class="lg:col-span-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold">Candidate Submissions Log</h3>
+                        <button id="admin-clear-all-btn" class="text-xs text-rose-500 hover:underline">Reset database</button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-400 uppercase font-bold">
+                                    <th class="py-3 px-2">Candidate</th>
+                                    <th class="py-3 px-2">Session Type</th>
+                                    <th class="py-3 px-2">Score</th>
+                                    <th class="py-3 px-2">Grade Outcome</th>
+                                    <th class="py-3 px-2">Time Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-submissions-tbody" class="divide-y divide-slate-100 dark:divide-slate-900">
+                                <!-- Dynamic logs filled by storage system -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= UI OVERLAYS & CUSTOM CONFIRM MODAL ================= -->
+    <!-- Spinner Modal Loader -->
+    <div id="loader-overlay" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center">
+        <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-xl flex flex-col items-center gap-4 max-w-xs text-center border border-slate-200 dark:border-slate-800">
+            <div class="w-12 h-12 rounded-full border-4 border-brand-200 border-t-brand-600 animate-spin"></div>
+            <div>
+                <h4 id="loader-title" class="font-extrabold text-sm text-slate-900 dark:text-white">Setting up environment</h4>
+                <p id="loader-desc" class="text-xs text-slate-400 mt-1">Arranging question nodes and configuration variables.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirm Dialog Modal (Bypasses Sandbox Iframe Blockers) -->
+    <div id="custom-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-2xl max-w-sm w-full border border-slate-200 dark:border-slate-800 text-center space-y-4 transform transition-all duration-300 scale-95 opacity-0" id="confirm-modal-box">
+            <div class="mx-auto w-12 h-12 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
+                <i data-lucide="help-circle" class="w-6 h-6"></i>
+            </div>
+            <h4 id="confirm-modal-title" class="font-extrabold text-lg text-slate-900 dark:text-white">Are you sure?</h4>
+            <p id="confirm-modal-desc" class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed"></p>
+            <div class="flex items-center gap-3">
+                <button id="confirm-modal-cancel" class="flex-1 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-xs transition-colors">Cancel</button>
+                <button id="confirm-modal-ok" class="flex-1 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs transition-colors">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripting Core App -->
+    <script>
+        // Global variables & configurations
+        let timerConfig = 45; // minutes
+        let passingThreshold = 50; // percent
+        let shuffleEnabled = true;
+
+        let currentUser = null;
+        let isExamMode = false;
+        let examTimeRemaining = timerConfig * 60; // in seconds
+        let examTimerInterval = null;
+
+        // Current Quiz State
+        let currentQuizIndex = 0;
+        let quizPool = []; 
+        let userSelectedAnswers = {}; 
+        let flaggedQuestions = {}; 
+
+        // Master Questions array (All 100 MCQs from PDF)
+        const masterQuestions = [
+            {
+                id: 1,
+                q: "UNIVAC is",
+                options: {
+                    A: "Universal Automatic Computer",
+                    B: "Universal Array Computer",
+                    C: "Unique Automatic Computer",
+                    D: "Unvalued Automatic Computer"
+                },
+                answer: "A"
+            },
+            {
+                id: 2,
+                q: "The basic operations performed by a computer are",
+                options: {
+                    A: "Arithmetic operation",
+                    B: "Logical operation",
+                    C: "Storage and relative",
+                    D: "All the above"
+                },
+                answer: "D"
+            },
+            {
+                id: 3,
+                q: "The two major types of computer chips are",
+                options: {
+                    A: "External memory chip",
+                    B: "Primary memory chip",
+                    C: "Microprocessor chip",
+                    D: "Both b and c"
+                },
+                answer: "D"
+            },
+            {
+                id: 4,
+                q: "Microprocessors as switching devices are for which generation computers",
+                options: {
+                    A: "First Generation",
+                    B: "Second Generation",
+                    C: "Third Generation",
+                    D: "Fourth Generation"
+                },
+                answer: "D"
+            },
+            {
+                id: 5,
+                q: "What is the main difference between a mainframe and a super computer?",
+                options: {
+                    A: "Super computer is much larger than mainframe computers",
+                    B: "Super computers are much smaller than mainframe computers",
+                    C: "Supercomputers are focused to execute few programs as fast as possible while mainframe uses its power to execute as many programs concurrently",
+                    D: "Supercomputers are focused to execute as many programs as possible while mainframe uses its power to execute few programs as fast as possible."
+                },
+                answer: "C"
+            },
+            {
+                id: 6,
+                q: "ASCII and EBCDIC are the popular character coding systems. What does EBCDIC stand for?",
+                options: {
+                    A: "Extended Binary Coded Decimal Interchange Code",
+                    B: "Extended Bit Code Decimal Interchange Code",
+                    C: "Extended Bit Case Decimal Interchange Code",
+                    D: "Extended Binary Case Decimal Interchange Code"
+                },
+                answer: "A"
+            },
+            {
+                id: 7,
+                q: "The brain of any computer system is",
+                options: {
+                    A: "ALU",
+                    B: "Memory",
+                    C: "CPU",
+                    D: "Control unit"
+                },
+                answer: "C"
+            },
+            {
+                id: 8,
+                q: "Storage capacity of magnetic disk depends on",
+                options: {
+                    A: "tracks per inch of surface",
+                    B: "bits per inch of tracks",
+                    C: "disk pack in disk surface",
+                    D: "All of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 9,
+                q: "The two kinds of main memory are:",
+                options: {
+                    A: "Primary and secondary",
+                    B: "Random and sequential",
+                    C: "ROM and RAM",
+                    D: "All of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 10,
+                q: "A storage area used to store data to compensate for the difference in speed at which the different units can handle data is",
+                options: {
+                    A: "Memory",
+                    B: "Buffer",
+                    C: "Accumulator",
+                    D: "Address"
+                },
+                answer: "B"
+            },
+            {
+                id: 11,
+                q: "Computer is free from tiresome and boredom. We call it",
+                options: {
+                    A: "Accuracy",
+                    B: "Reliability",
+                    C: "Diligence",
+                    D: "Versatility"
+                },
+                answer: "C"
+            },
+            {
+                id: 12,
+                q: "Integrated Circuits (ICs) are related to which generation of computers?",
+                options: {
+                    A: "First generation",
+                    B: "Second generation",
+                    C: "Third generation",
+                    D: "Fourth generation"
+                },
+                answer: "C"
+            },
+            {
+                id: 13,
+                q: "CD-ROM is a",
+                options: {
+                    A: "Semiconductor memory",
+                    B: "Memory register",
+                    C: "Magnetic memory",
+                    D: "None of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 14,
+                q: "A hybrid computer",
+                options: {
+                    A: "Resembles digital computer",
+                    B: "Resembles analogue computer",
+                    C: "Resembles both a digital and analogue computer",
+                    D: "None of the above"
+                },
+                answer: "C"
+            },
+            {
+                id: 15,
+                q: "Which type of computers uses the 8-bit code called EBCDIC?",
+                options: {
+                    A: "Minicomputers",
+                    B: "Microcomputers",
+                    C: "Mainframe computers",
+                    D: "Super computer"
+                },
+                answer: "C"
+            },
+            {
+                id: 16,
+                q: "The ALU of a computer responds to the commands coming from",
+                options: {
+                    A: "Primary memory",
+                    B: "Control section",
+                    C: "External memory",
+                    D: "Cache memory"
+                },
+                answer: "B"
+            },
+            {
+                id: 17,
+                q: "Chief component of first generation computer was",
+                options: {
+                    A: "Transistors",
+                    B: "Vacuum Tubes and Valves",
+                    C: "Integrated Circuits",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 18,
+                q: "To produce high quality graphics (hardcopy) in color, you would want to use a/n",
+                options: {
+                    A: "RGB monitor",
+                    B: "Plotter",
+                    C: "Ink-jet printer",
+                    D: "Laser printer"
+                },
+                answer: "B"
+            },
+            {
+                id: 19,
+                q: "What are the stages in the compilation process?",
+                options: {
+                    A: "Feasibility study, system design and testing",
+                    B: "Implementation and documentation",
+                    C: "Lexical Analysis, syntax analysis, and code generation",
+                    D: "None of the above"
+                },
+                answer: "C"
+            },
+            {
+                id: 20,
+                q: "Which of the following IC was used in third generation of computers?",
+                options: {
+                    A: "SSI",
+                    B: "MSI",
+                    C: "LSI",
+                    D: "Both a and b"
+                },
+                answer: "D"
+            },
+            {
+                id: 21,
+                q: "The main electronic component used in first generation computers was",
+                options: {
+                    A: "Transistors",
+                    B: "Vacuum Tubes and Valves",
+                    C: "Integrated Circuits",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 22,
+                q: "A dumb terminal has",
+                options: {
+                    A: "an embedded microprocessor",
+                    B: "extensive memory",
+                    C: "independent processing capability",
+                    D: "a keyboard and screen"
+                },
+                answer: "D"
+            },
+            {
+                id: 23,
+                q: "One millisecond is",
+                options: {
+                    A: "1 second",
+                    B: "10th of a seconds",
+                    C: "1000th of a seconds",
+                    D: "10000th of a seconds"
+                },
+                answer: "C"
+            },
+            {
+                id: 24,
+                q: "The output quality of a printer is measured by",
+                options: {
+                    A: "Dot per sq. inch",
+                    B: "Dot per inch",
+                    C: "Dots printed per unit time",
+                    D: "All of the above"
+                },
+                answer: "A"
+            },
+            {
+                id: 25,
+                q: "Which of the following was a special purpose computer?",
+                options: {
+                    A: "ABC",
+                    B: "ENIAC",
+                    C: "EDVAC",
+                    D: "All of the above"
+                },
+                answer: "A"
+            },
+            {
+                id: 26,
+                q: "What was the computer invented by Attanasoff and Clifford?",
+                options: {
+                    A: "Mark I",
+                    B: "ABC",
+                    C: "Z3",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 27,
+                q: "Which of the following storage devices can store maximum amount of data?",
+                options: {
+                    A: "Floppy Disk",
+                    B: "Hard Disk",
+                    C: "Compact Disk",
+                    D: "Magneto Optic Disk"
+                },
+                answer: "B"
+            },
+            {
+                id: 28,
+                q: "Which computer was considered the first electronic computer until 1973 when court invalidated the patent?",
+                options: {
+                    A: "ENIAC",
+                    B: "MARK I",
+                    C: "Z3",
+                    D: "ABC"
+                },
+                answer: "A"
+            },
+            {
+                id: 29,
+                q: "A physical connection between the microprocessor memory and other parts of the microcomputer is known as",
+                options: {
+                    A: "Path",
+                    B: "Address bus",
+                    C: "Route",
+                    D: "All of the above"
+                },
+                answer: "B"
+            },
+            {
+                id: 30,
+                q: "High density double sided floppy disks could store _________ of data",
+                options: {
+                    A: "1.40 MB",
+                    B: "1.44 GB",
+                    C: "1.40 GB",
+                    D: "1.44 MB"
+                },
+                answer: "D"
+            },
+            {
+                id: 31,
+                q: "A high quality CAD system uses the following for printing drawing and graphs",
+                options: {
+                    A: "Dot matrix printer",
+                    B: "Digital plotter",
+                    C: "Line printer",
+                    D: "All of the above"
+                },
+                answer: "B"
+            },
+            {
+                id: 32,
+                q: "Which of the following is not an input device?",
+                options: {
+                    A: "OCR",
+                    B: "Optical scanners",
+                    C: "Voice recognition device",
+                    D: "COM (Computer Output to Microfilm)"
+                },
+                answer: "D"
+            },
+            {
+                id: 33,
+                q: "The accuracy of the floating-point numbers representable in two 16-bit words of a computer is approximately",
+                options: {
+                    A: "16 digits",
+                    B: "6 digits",
+                    C: "9 digits",
+                    D: "All of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 34,
+                q: "In most of the IBM PCs, the CPU, the device drivers, memory, expansion slots and active components are mounted on a single board. What is the name of the board?",
+                options: {
+                    A: "Motherboard",
+                    B: "Daughterboard",
+                    C: "Breadboard",
+                    D: "Fatherboard"
+                },
+                answer: "A"
+            },
+            {
+                id: 35,
+                q: "In most IBM PCs, the CPU, the device drives, memory expansion slots and active components are mounted on a single board. What is the name of this board?",
+                options: {
+                    A: "Motherboard",
+                    B: "Breadboard",
+                    C: "Daughter board",
+                    D: "Grandmother board"
+                },
+                answer: "A"
+            },
+            {
+                id: 36,
+                q: "Magnetic disks are the most popular medium for",
+                options: {
+                    A: "Direct access",
+                    B: "Sequential access",
+                    C: "Both of above",
+                    D: "None of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 37,
+                q: "A technique used by codes to convert an analog signal into a digital bit stream is known as",
+                options: {
+                    A: "Pulse code modulation",
+                    B: "Pulse stretcher",
+                    C: "Query processing",
+                    D: "Queue management"
+                },
+                answer: "A"
+            },
+            {
+                id: 38,
+                q: "Regarding a VDU, Which statement is more correct?",
+                options: {
+                    A: "It is an output device",
+                    B: "It is an input device",
+                    C: "It is a peripheral device",
+                    D: "It is hardware item"
+                },
+                answer: "C"
+            },
+            {
+                id: 39,
+                q: "A modern electronic computer is a machine that is meant for",
+                options: {
+                    A: "Doing quick mathematical calculations",
+                    B: "Input, storage, manipulation and outputting of data",
+                    C: "Electronic data processing",
+                    D: "Performing repetitive tasks accurately"
+                },
+                answer: "B"
+            },
+            {
+                id: 40,
+                q: "When was vacuum tube invented?",
+                options: {
+                    A: "1900",
+                    B: "1906",
+                    C: "1910",
+                    D: "1880"
+                },
+                answer: "B"
+            },
+            {
+                id: 41,
+                q: "Which of the following produces the best quality graphics reproduction?",
+                options: {
+                    A: "Laser printer",
+                    B: "Ink jet printer",
+                    C: "Plotter",
+                    D: "Dot matrix printer"
+                },
+                answer: "C"
+            },
+            {
+                id: 42,
+                q: "Computers with 80286 microprocessor is",
+                options: {
+                    A: "XT computer",
+                    B: "AT computers",
+                    C: "PS/2 computer",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 43,
+                q: "An application suitable for sequential processing is",
+                options: {
+                    A: "Processing of grades",
+                    B: "Payroll processing",
+                    C: "Both a and b",
+                    D: "All of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 44,
+                q: "Which of the following is not processing?",
+                options: {
+                    A: "arranging",
+                    B: "manipulating",
+                    C: "calculating",
+                    D: "gathering"
+                },
+                answer: "D"
+            },
+            {
+                id: 45,
+                q: "The digital computer was developed primarily in",
+                options: {
+                    A: "USSR",
+                    B: "Japan",
+                    C: "USA",
+                    D: "UK"
+                },
+                answer: "C"
+            },
+            {
+                id: 46,
+                q: "Software in computer",
+                options: {
+                    A: "Enhances the capabilities of the hardware machine",
+                    B: "Increase the speed of central processing unit",
+                    C: "Both of above",
+                    D: "None of above"
+                },
+                answer: "A"
+            },
+            {
+                id: 47,
+                q: "Today's computer giant IBM was earlier known by different name which was changed in 1924. What was that name?",
+                options: {
+                    A: "Tabulator Machine Co.",
+                    B: "Computing Tabulating Recording Co.",
+                    C: "The Tabulator Ltd.",
+                    D: "International Computer Ltd."
+                },
+                answer: "B"
+            },
+            {
+                id: 48,
+                q: "Before a disk drive can access any sector record, a computer program has to provide the record's disk address. What information does this address specify?",
+                options: {
+                    A: "Track number",
+                    B: "Sector number",
+                    C: "Surface number",
+                    D: "All of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 49,
+                q: "The arranging of data in a logical sequence is called",
+                options: {
+                    A: "Sorting",
+                    B: "Classifying",
+                    C: "Reproducing",
+                    D: "Summarizing"
+                },
+                answer: "A"
+            },
+            {
+                id: 50,
+                q: "What is the responsibility of the logical unit in the CPU of a computer?",
+                options: {
+                    A: "To produce result",
+                    B: "To compare numbers",
+                    C: "To control flow of information",
+                    D: "To do math's works"
+                },
+                answer: "B"
+            },
+            {
+                id: 51,
+                q: "Abacus was the first",
+                options: {
+                    A: "electronic computer",
+                    B: "mechanical computer",
+                    C: "electronic calculator",
+                    D: "mechanical calculator"
+                },
+                answer: "D"
+            },
+            {
+                id: 52,
+                q: "If in a computer, 16 bits are used to specify address in a RAM, the number of addresses will be",
+                options: {
+                    A: "216",
+                    B: "65,536",
+                    C: "64K",
+                    D: "Any of the above"
+                },
+                answer: "B"
+            },
+            {
+                id: 53,
+                q: "Instructions and memory address are represented by",
+                options: {
+                    A: "Character code",
+                    B: "Binary codes",
+                    C: "Binary word",
+                    D: "Parity bit"
+                },
+                answer: "B"
+            },
+            {
+                id: 54,
+                q: "The terminal device that functions as a cash register, computer terminal, and OCR reader is the:",
+                options: {
+                    A: "Data collection terminal",
+                    B: "OCR register terminal",
+                    C: "Video Display terminal",
+                    D: "POS terminal"
+                },
+                answer: "D"
+            },
+            {
+                id: 55,
+                q: "A set of flip flops integrated together is called",
+                options: {
+                    A: "Counter",
+                    B: "Adder",
+                    C: "Register",
+                    D: "None of the above"
+                },
+                answer: "C"
+            },
+            {
+                id: 56,
+                q: "People often call ________ as the brain of computer system",
+                options: {
+                    A: "Control Unit",
+                    B: "Arithmetic Logic Unit",
+                    C: "Central Processing Unit",
+                    D: "Storage Unit"
+                },
+                answer: "C"
+            },
+            {
+                id: 57,
+                q: "Which is used for manufacturing chips?",
+                options: {
+                    A: "Bus",
+                    B: "Control unit",
+                    C: "Semiconductors",
+                    D: "A and b only"
+                },
+                answer: "C"
+            },
+            {
+                id: 58,
+                q: "The value of each bead in heaven of an abacus is",
+                options: {
+                    A: "1",
+                    B: "3",
+                    C: "5",
+                    D: "7"
+                },
+                answer: "C"
+            },
+            {
+                id: 59,
+                q: "The first computer introduced in Nepal was",
+                options: {
+                    A: "IBM 1400",
+                    B: "IBM 1401",
+                    C: "IBM 1402",
+                    D: "IBM 1403"
+                },
+                answer: "B"
+            },
+            {
+                id: 60,
+                q: "Mnemonic a memory trick is used in which of the following language?",
+                options: {
+                    A: "Machine language",
+                    B: "Assembly language",
+                    C: "High level language",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 61,
+                q: "Instruction in computer languages consists of",
+                options: {
+                    A: "OPCODE",
+                    B: "OPERAND",
+                    C: "Both of above",
+                    D: "None of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 62,
+                q: "Which generation of computer is still under development",
+                options: {
+                    A: "Fourth Generation",
+                    B: "Fifth Generation",
+                    C: "Sixth Generation",
+                    D: "Seventh Generation"
+                },
+                answer: "B"
+            },
+            {
+                id: 63,
+                q: "A register organized to allow to move left or right operations is called a",
+                options: {
+                    A: "Counter",
+                    B: "Loader",
+                    C: "Adder",
+                    D: "Shift register"
+                },
+                answer: "D"
+            },
+            {
+                id: 64,
+                q: "Which was the most popular first generation computer?",
+                options: {
+                    A: "IBM 1650",
+                    B: "IBM 360",
+                    C: "IBM 1130",
+                    D: "IBM 2700"
+                },
+                answer: "A"
+            },
+            {
+                id: 65,
+                q: "Which is considered a direct entry input device?",
+                options: {
+                    A: "Optical scanner",
+                    B: "Mouse and digitizer",
+                    C: "Light pen",
+                    D: "All of the above"
+                },
+                answer: "D"
+            },
+            {
+                id: 66,
+                q: "A set of information that defines the status of resources allocated to a process is",
+                options: {
+                    A: "Process control",
+                    B: "ALU",
+                    C: "Register Unit",
+                    D: "Process description"
+                },
+                answer: "D"
+            },
+            {
+                id: 67,
+                q: "Each set of Napier's bones consisted of _______ rods.",
+                options: {
+                    A: "5",
+                    B: "9",
+                    C: "11",
+                    D: "13"
+                },
+                answer: "C"
+            },
+            {
+                id: 68,
+                q: "BCD is",
+                options: {
+                    A: "Binary Coded Decimal",
+                    B: "Bit Coded Decimal",
+                    C: "Binary Coded Digit",
+                    D: "Bit Coded Digit"
+                },
+                answer: "A"
+            },
+            {
+                id: 69,
+                q: "When was the world's first laptop computer introduced in the market and by whom?",
+                options: {
+                    A: "Hewlett-Packard, 1980",
+                    B: "Epson, 1981",
+                    C: "Laplink Traveling Software Inc, 1982",
+                    D: "Tandy Model-200, 1985"
+                },
+                answer: "B"
+            },
+            {
+                id: 70,
+                q: "From which generation operating systems were developed?",
+                options: {
+                    A: "First",
+                    B: "Second",
+                    C: "Third",
+                    D: "Fourth"
+                },
+                answer: "C"
+            },
+            {
+                id: 71,
+                q: "The first firm to mass-market a microcomputer as a personal computer was",
+                options: {
+                    A: "IBM",
+                    B: "Super UNIVAC",
+                    C: "Radio Shack",
+                    D: "Data General Corporation"
+                },
+                answer: "C"
+            },
+            {
+                id: 72,
+                q: "How many address lines are needed to address each machine location in a 2048 x 4 memory chip?",
+                options: {
+                    A: "10",
+                    B: "11",
+                    C: "8",
+                    D: "12"
+                },
+                answer: "B"
+            },
+            {
+                id: 73,
+                q: "Properly arranged data is called",
+                options: {
+                    A: "Field",
+                    B: "Words",
+                    C: "Information",
+                    D: "File"
+                },
+                answer: "C"
+            },
+            {
+                id: 74,
+                q: "A computer consists of",
+                options: {
+                    A: "A central processing unit",
+                    B: "A memory",
+                    C: "Input and output unit",
+                    D: "All of the above"
+                },
+                answer: "D"
+            },
+            {
+                id: 75,
+                q: "Why are vacuum tubes also called valves?",
+                options: {
+                    A: "Because they can amplify weak signals and make them strong",
+                    B: "Because they can stop or allow the flow of current",
+                    C: "Both of above",
+                    D: "None of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 76,
+                q: "John Napier invented Logarithm in",
+                options: {
+                    A: "1614",
+                    B: "1617",
+                    C: "1620",
+                    D: "None of above"
+                },
+                answer: "A"
+            },
+            {
+                id: 77,
+                q: "An integrated circuit is",
+                options: {
+                    A: "A complicated circuit",
+                    B: "An integrating device",
+                    C: "Much costlier than a single transistor",
+                    D: "Fabricated on a tiny silicon chip"
+                },
+                answer: "D"
+            },
+            {
+                id: 78,
+                q: "What type of control pins are needed in a microprocessor to regulate traffic on the bus, in order to prevent two devices from trying to use it at the same time?",
+                options: {
+                    A: "Bus control",
+                    B: "Interrupts",
+                    C: "Bus arbitration",
+                    D: "Status"
+                },
+                answer: "C"
+            },
+            {
+                id: 79,
+                q: "Where as a computer mouse moves over the table surface, the trackball is",
+                options: {
+                    A: "Stationary",
+                    B: "Difficult to move",
+                    C: "Dragged",
+                    D: "Moved in small steps"
+                },
+                answer: "A"
+            },
+            {
+                id: 80,
+                q: "Which of the following is used as a primary storage device?",
+                options: {
+                    A: "Magnetic drum",
+                    B: "Hard Disks",
+                    C: "Floppy",
+                    D: "All of above"
+                },
+                answer: "A"
+            },
+            {
+                id: 81,
+                q: "Multi user systems provided cost savings for small business because they use a single processing unit to link several",
+                options: {
+                    A: "Personal computers",
+                    B: "Workstations",
+                    C: "Dumb terminals",
+                    D: "Mainframes"
+                },
+                answer: "C"
+            },
+            {
+                id: 82,
+                q: "What are the three decision making operations performed by the ALU of a computer?",
+                options: {
+                    A: "Greater than",
+                    B: "Less than",
+                    C: "Equal to",
+                    D: "All of the above"
+                },
+                answer: "D"
+            },
+            {
+                id: 83,
+                q: "The word processing task associated with changing the appearance of a document is",
+                options: {
+                    A: "Editing",
+                    B: "Writing",
+                    C: "Formatting",
+                    D: "All of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 84,
+                q: "Nepal brought a computer for census of 2028 BS. This computer was of",
+                options: {
+                    A: "first generation",
+                    B: "second generation",
+                    C: "third generation",
+                    D: "fourth generation"
+                },
+                answer: "B"
+            },
+            {
+                id: 85,
+                q: "Algorithm and Flow chart help us to",
+                options: {
+                    A: "Know the memory capacity",
+                    B: "Identify the base of a number system",
+                    C: "Direct the output to a printer",
+                    D: "Specify the problem completely and clearly"
+                },
+                answer: "D"
+            },
+            {
+                id: 86,
+                q: "Which statement is valid about computer program?",
+                options: {
+                    A: "It is understood by a computer",
+                    B: "It is understood by programmer",
+                    C: "It is understood by user",
+                    D: "Both a & b"
+                },
+                answer: "D"
+            },
+            {
+                id: 87,
+                q: "The difference between memory and storage is that memory is _____ and storage is _____",
+                options: {
+                    A: "Temporary, permanent",
+                    B: "Permanent, temporary",
+                    C: "Slow, fast",
+                    D: "All of above"
+                },
+                answer: "A"
+            },
+            {
+                id: 88,
+                q: "When was Pascaline invented?",
+                options: {
+                    A: "1617",
+                    B: "1620",
+                    C: "1642",
+                    D: "1837"
+                },
+                answer: "C"
+            },
+            {
+                id: 89,
+                q: "Which of the following statement is valid?",
+                options: {
+                    A: "Lady Augusta is the first programmer",
+                    B: "Ada is the daughter of Lord Byron, a famous English poet",
+                    C: "ADA is a programming language developed by US Defense",
+                    D: "All of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 90,
+                q: "A compiler is a translating program which",
+                options: {
+                    A: "Translates instruction of a high level language into machine language",
+                    B: "Translates entire source program into machine language program",
+                    C: "It is not involved in program's execution",
+                    D: "All of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 91,
+                q: "What is required when more than one person uses a central computer at the same time?",
+                options: {
+                    A: "Light pen",
+                    B: "Mouse",
+                    C: "Digitizer",
+                    D: "Terminal"
+                },
+                answer: "D"
+            },
+            {
+                id: 92,
+                q: "Which of the following is the first computer to use Stored Program Concept?",
+                options: {
+                    A: "UNIVAC",
+                    B: "ENIAC",
+                    C: "EDSAC",
+                    D: "None of above"
+                },
+                answer: "C"
+            },
+            {
+                id: 93,
+                q: "The term gigabyte refers to",
+                options: {
+                    A: "1024 bytes",
+                    B: "1024 kilobytes",
+                    C: "1024 megabytes",
+                    D: "1024 gigabyte"
+                },
+                answer: "C"
+            },
+            {
+                id: 94,
+                q: "In which year was UK's premier computing event called 'The Which Computer?' started?",
+                options: {
+                    A: "1980",
+                    B: "1985",
+                    C: "1986",
+                    D: "1987"
+                },
+                answer: "A"
+            },
+            {
+                id: 95,
+                q: "Once you load the suitable program and provide required data, computer does not need human intervention. This feature is known as",
+                options: {
+                    A: "Accuracy",
+                    B: "Reliability",
+                    C: "Versatility",
+                    D: "Automatic"
+                },
+                answer: "D"
+            },
+            {
+                id: 96,
+                q: "What is a brand?",
+                options: {
+                    A: "The name of companies that made computers",
+                    B: "The name of product a company gives to identify its product in market",
+                    C: "A name of class to indicate all similar products from different companies",
+                    D: "All of above"
+                },
+                answer: "B"
+            },
+            {
+                id: 97,
+                q: "Machine language is",
+                options: {
+                    A: "Machine dependent",
+                    B: "Difficult to program",
+                    C: "Error prone",
+                    D: "All of above"
+                },
+                answer: "D"
+            },
+            {
+                id: 98,
+                q: "A byte consists of",
+                options: {
+                    A: "One bit",
+                    B: "Four bits",
+                    C: "Eight bits",
+                    D: "Sixteen bits"
+                },
+                answer: "C"
+            },
+            {
+                id: 99,
+                q: "Modern Computers are very reliable but they are not",
+                options: {
+                    A: "Fast",
+                    B: "Powerful",
+                    C: "Infallible",
+                    D: "Cheap"
+                },
+                answer: "C"
+            },
+            {
+                id: 100,
+                q: "What is the date when Babbage conceived Analytical engine?",
+                options: {
+                    A: "1642",
+                    B: "1837",
+                    C: "1880",
+                    D: "1850"
+                },
+                answer: "B"
+            }
+        ];
+
+        // Mock historical data on start
+        let testSubmissions = [
+            { id: "S-1042", user: "Alexander Smith", type: "Exam", score: 172, percentage: 86, grade: "Excellent", timerLeft: "12:15" },
+            { id: "S-1043", user: "Chioma Nduka", type: "Exam", score: 154, percentage: 77, grade: "Very Good", timerLeft: "08:44" },
+            { id: "S-1044", user: "Liam Sterling", type: "Exam", score: 98, percentage: 49, grade: "Fail", timerLeft: "00:00" },
+            { id: "S-1045", user: "Fatima Yusuf", type: "Exam", score: 194, percentage: 97, grade: "Outstanding", timerLeft: "15:02" }
+        ];
+
+        // System Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLogs = localStorage.getItem('prepmaster_cbt_submissions');
+            if (savedLogs) {
+                try {
+                    testSubmissions = JSON.parse(savedLogs);
+                } catch(e) {}
+            }
+
+            const savedSettings = localStorage.getItem('prepmaster_cbt_settings');
+            if (savedSettings) {
+                try {
+                    const parsed = JSON.parse(savedSettings);
+                    timerConfig = parsed.timerConfig || 45;
+                    passingThreshold = parsed.passingThreshold || 50;
+                    shuffleEnabled = parsed.shuffleEnabled !== undefined ? parsed.shuffleEnabled : true;
+                } catch(e) {}
+            }
+
+            lucide.createIcons();
+
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            bindEvents();
+            showScreen('screen-login');
+        });
+
+        // Custom Confirm Dialog (Fully runs on sandboxed iframes)
+        function showCustomConfirm(title, description, onConfirm, onCancel = null) {
+            const modal = document.getElementById('custom-confirm-modal');
+            const box = document.getElementById('confirm-modal-box');
+            
+            document.getElementById('confirm-modal-title').textContent = title;
+            document.getElementById('confirm-modal-desc').textContent = description;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+
+            const btnOk = document.getElementById('confirm-modal-ok');
+            const btnCancel = document.getElementById('confirm-modal-cancel');
+
+            // Strip previous event listeners
+            const newBtnOk = btnOk.cloneNode(true);
+            const newBtnCancel = btnCancel.cloneNode(true);
+            btnOk.parentNode.replaceChild(newBtnOk, btnOk);
+            btnCancel.parentNode.replaceChild(newBtnCancel, btnCancel);
+
+            const closeModal = () => {
+                box.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 150);
+            };
+
+            newBtnOk.addEventListener('click', () => {
+                closeModal();
+                if (onConfirm) onConfirm();
+            });
+
+            newBtnCancel.addEventListener('click', () => {
+                closeModal();
+                if (onCancel) onCancel();
+            });
+        }
+
+        // Bind Navigation Events
+        function bindEvents() {
+            // Theme Toggle
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            // Login System
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = document.getElementById('login-username').value.trim();
+                const passInput = document.getElementById('login-password').value.trim();
+
+                if (passInput === 'Gozzy001') {
+                    loginUser(nameInput, 'student');
+                } else if (passInput === 'adminpass') {
+                    loginUser(nameInput || 'Administrator', 'admin');
+                } else {
+                    showToast('Invalid password key.', 'error');
+                }
+            });
+
+            // Home Controls
+            document.getElementById('start-exam-btn').addEventListener('click', () => startQuiz(true));
+            document.getElementById('start-practice-btn').addEventListener('click', () => startQuiz(false));
+            document.getElementById('logout-btn').addEventListener('click', logout);
+            document.getElementById('show-history-btn').addEventListener('click', () => showHistoryScreen());
+            document.getElementById('back-from-history-btn').addEventListener('click', () => showScreen('screen-home'));
+            document.getElementById('clear-history-btn').addEventListener('click', handleClearHistory);
+            
+            // Exam Controls
+            document.getElementById('prev-q-btn').addEventListener('click', navigatePrevious);
+            document.getElementById('next-q-btn').addEventListener('click', navigateNext);
+            document.getElementById('flag-btn').addEventListener('click', toggleFlag);
+            document.getElementById('submit-exam-btn').addEventListener('click', confirmExamSubmission);
+            document.getElementById('quit-exam-btn').addEventListener('click', quitExamLobby);
+
+            // Admin Actions
+            document.getElementById('trigger-admin-btn').addEventListener('click', () => {
+                const pass = prompt("Enter system administrator credential key:");
+                if (pass === 'adminpass' || pass === 'Gozzy001') {
+                    showAdminScreen();
+                } else if (pass !== null) {
+                    showToast("Unauthorized request. Access denied.", "error");
+                }
+            });
+            document.getElementById('exit-admin-btn').addEventListener('click', () => showScreen('screen-home'));
+            document.getElementById('save-settings-btn').addEventListener('click', saveAdminSettings);
+            document.getElementById('admin-clear-all-btn').addEventListener('click', resetDatabase);
+
+            // Review / Post Exam Options
+            document.getElementById('review-answers-btn').addEventListener('click', showAnswerReview);
+            document.getElementById('exit-review-btn').addEventListener('click', () => showScreen('screen-results'));
+            document.getElementById('restart-home-btn').addEventListener('click', () => showScreen('screen-home'));
+        }
+
+        // Screen Routing
+        function showScreen(screenId) {
+            const screens = ['screen-login', 'screen-home', 'screen-exam', 'screen-results', 'screen-review', 'screen-history', 'screen-admin'];
+            screens.forEach(id => {
+                const el = document.getElementById(id);
+                if (id === screenId) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // User Login
+        function loginUser(username, role) {
+            currentUser = { username, role };
+            document.getElementById('nav-username').textContent = username;
+            document.getElementById('nav-role').textContent = role;
+            document.getElementById('welcome-name').textContent = username;
+            document.getElementById('user-nav-profile').classList.remove('hidden');
+            
+            showToast(`Logged in successfully as ${username}`, 'success');
+            
+            if (role === 'admin') {
+                showAdminScreen();
+            } else {
+                showScreen('screen-home');
+            }
+        }
+
+        // Developer Direct Bypass helper
+        function bypassToAdmin() {
+            loginUser('System Admin', 'admin');
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('user-nav-profile').classList.add('hidden');
+            document.getElementById('login-username').value = '';
+            document.getElementById('login-password').value = '';
+            showScreen('screen-login');
+            showToast('Logged out safely.', 'info');
+        }
+
+        // Toast helper
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let bgClass = "bg-slate-800 text-white";
+            let iconName = "info";
+
+            if (type === 'success') {
+                bgClass = "bg-emerald-600 text-white shadow-lg";
+                iconName = "check-circle";
+            } else if (type === 'error') {
+                bgClass = "bg-rose-600 text-white shadow-lg";
+                iconName = "alert-triangle";
+            }
+
+            toast.className = `p-4 rounded-2xl flex items-center gap-3 text-sm font-semibold transform translate-y-2 opacity-0 transition-all duration-300 pointer-events-auto ${bgClass}`;
+            toast.innerHTML = `
+                <i data-lucide="${iconName}" class="w-5 h-5 flex-shrink-0"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // Bookmark Flag logic
+        function toggleFlag() {
+            const currentQ = quizPool[currentQuizIndex];
+            flaggedQuestions[currentQ.id] = !flaggedQuestions[currentQ.id];
+            
+            const flagBtn = document.getElementById('flag-btn');
+            if (flaggedQuestions[currentQ.id]) {
+                flagBtn.className = "p-2 rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-950/40 hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all flex-shrink-0";
+                showToast('Question flagged for review.', 'info');
+            } else {
+                flagBtn.className = "p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all flex-shrink-0";
+            }
+
+            updateNavigationGrid();
+        }
+
+        // Left Navigation Map Grid update
+        function updateNavigationGrid() {
+            const gridContainer = document.getElementById('navigation-grid');
+            gridContainer.innerHTML = '';
+
+            quizPool.forEach((q, index) => {
+                const btn = document.createElement('button');
+                btn.type = "button";
+                
+                let styleClasses = "h-11 w-11 rounded-xl text-xs font-extrabold flex items-center justify-center border transition-all active:scale-90 ";
+                
+                const isSelected = index === currentQuizIndex;
+                const isAnswered = userSelectedAnswers[q.id] !== undefined;
+                const isFlagged = flaggedQuestions[q.id] === true;
+
+                if (isSelected) {
+                    styleClasses += "ring-4 ring-brand-500/30 bg-brand-600 text-white border-brand-500 shadow-md";
+                } else if (isFlagged) {
+                    styleClasses += "bg-amber-500 text-white border-amber-600 shadow-sm";
+                } else if (isAnswered) {
+                    styleClasses += "bg-brand-100 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border-brand-300 dark:border-brand-900";
+                } else {
+                    styleClasses += "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800";
+                }
+
+                btn.className = styleClasses;
+                btn.innerText = index + 1;
+                btn.addEventListener('click', () => jumpToQuestion(index));
+                gridContainer.appendChild(btn);
+            });
+
+            const totalAnswered = Object.keys(userSelectedAnswers).length;
+            document.getElementById('answered-count-badge').textContent = `${totalAnswered} / ${quizPool.length}`;
+        }
+
+        function jumpToQuestion(index) {
+            currentQuizIndex = index;
+            renderQuestion();
+            updateNavigationGrid();
+        }
+
+        // Start Exam Simulator session
+        function startQuiz(modeExam) {
+            showLoader("Setting up Simulator", "Configuring question engines and data structures.");
+            isExamMode = modeExam;
+
+            currentQuizIndex = 0;
+            userSelectedAnswers = {};
+            flaggedQuestions = {};
+
+            let pool = JSON.parse(JSON.stringify(masterQuestions));
+
+            if (shuffleEnabled) {
+                for (let i = pool.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [pool[i], pool[j]] = [pool[j], pool[i]];
+                }
+            }
+
+            quizPool = pool;
+
+            if (isExamMode) {
+                document.getElementById('badge-mode').className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
+                document.getElementById('badge-mode').textContent = "Exam Mode";
+                document.getElementById('exam-timer-wrapper').classList.remove('hidden');
+                examTimeRemaining = timerConfig * 60;
+                startTimerLoop();
+            } else {
+                document.getElementById('badge-mode').className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
+                document.getElementById('badge-mode').textContent = "Practice Mode";
+                document.getElementById('exam-timer-wrapper').classList.add('hidden');
+                if (examTimerInterval) clearInterval(examTimerInterval);
+            }
+
+            document.getElementById('explanation-panel').classList.add('hidden');
+
+            setTimeout(() => {
+                hideLoader();
+                showScreen('screen-exam');
+                renderQuestion();
+                updateNavigationGrid();
+            }, 800);
+        }
+
+        // Timer controller
+        function startTimerLoop() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            
+            updateTimerDisplay();
+            examTimerInterval = setInterval(() => {
+                examTimeRemaining--;
+                if (examTimeRemaining <= 0) {
+                    clearInterval(examTimerInterval);
+                    autoSubmitExam();
+                } else {
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(examTimeRemaining / 60);
+            const seconds = examTimeRemaining % 60;
+            document.getElementById('exam-timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (examTimeRemaining < 300) {
+                document.getElementById('exam-timer-wrapper').classList.add('animate-pulse');
+            } else {
+                document.getElementById('exam-timer-wrapper').classList.remove('animate-pulse');
+            }
+        }
+
+        // Render current question block
+        function renderQuestion() {
+            const q = quizPool[currentQuizIndex];
+            
+            document.getElementById('exam-progress-text').textContent = `Question ${currentQuizIndex + 1} of ${quizPool.length}`;
+            document.getElementById('q-id-num').textContent = currentQuizIndex + 1;
+            document.getElementById('q-text').textContent = q.q;
+
+            const flagBtn = document.getElementById('flag-btn');
+            if (flaggedQuestions[q.id]) {
+                flagBtn.className = "p-2 rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-950/40 hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all flex-shrink-0";
+            } else {
+                flagBtn.className = "p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/20 transition-all flex-shrink-0";
+            }
+
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+
+            const selectedAnswer = userSelectedAnswers[q.id];
+
+            Object.keys(q.options).forEach(key => {
+                const optText = q.options[key];
+                const optionButton = document.createElement('button');
+                optionButton.type = "button";
+                
+                let optStyle = "w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all duration-200 outline-none select-none text-sm font-semibold ";
+
+                const isThisSelected = selectedAnswer === key;
+
+                if (isExamMode) {
+                    if (isThisSelected) {
+                        optStyle += "border-brand-500 bg-brand-50/70 dark:bg-brand-950/30 text-brand-700 dark:text-brand-300 ring-2 ring-brand-500/20";
+                    } else {
+                        optStyle += "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300";
+                    }
+                } else {
+                    const alreadyAnswered = selectedAnswer !== undefined;
+                    
+                    if (alreadyAnswered) {
+                        if (key === q.answer) {
+                            optStyle += "border-emerald-500 bg-emerald-50/60 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 font-bold";
+                        } else if (isThisSelected && isThisSelected !== q.answer) {
+                            optStyle += "border-rose-500 bg-rose-50/60 dark:bg-rose-950/30 text-rose-700 dark:text-rose-300";
+                        } else {
+                            optStyle += "border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed";
+                        }
+                    } else {
+                        optStyle += "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300";
+                    }
+                }
+
+                optionButton.className = optStyle;
+                optionButton.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-7 h-7 flex-shrink-0 rounded-lg flex items-center justify-center font-bold text-xs ${isThisSelected ? 'bg-brand-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}">${key}</span>
+                        <span>${optText}</span>
+                    </div>
+                `;
+
+                if (isThisSelected) {
+                    optionButton.innerHTML += `<i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 dark:text-brand-400"></i>`;
+                }
+
+                optionButton.addEventListener('click', () => handleOptionSelection(key));
+                optContainer.appendChild(optionButton);
+            });
+
+            const expPanel = document.getElementById('explanation-panel');
+            if (!isExamMode && selectedAnswer !== undefined) {
+                expPanel.classList.remove('hidden');
+                document.getElementById('explanation-text').innerHTML = `
+                    <strong>Correct Answer Option ${q.answer}</strong>. 
+                    This item validates your knowledge of computer fundamentals, generations, and processing mechanisms. Option ${q.answer} matches the official answers key catalog.
+                `;
+            } else {
+                expPanel.classList.add('hidden');
+            }
+
+            lucide.createIcons();
+        }
+
+        function handleOptionSelection(optionKey) {
+            const q = quizPool[currentQuizIndex];
+            
+            if (!isExamMode && userSelectedAnswers[q.id] !== undefined) {
+                return; 
+            }
+
+            userSelectedAnswers[q.id] = optionKey;
+            renderQuestion();
+            updateNavigationGrid();
+        }
+
+        // Flow navigators
+        function navigatePrevious() {
+            if (currentQuizIndex > 0) {
+                currentQuizIndex--;
+                renderQuestion();
+                updateNavigationGrid();
+            } else {
+                showToast("Already at the first question.", "info");
+            }
+        }
+
+        function navigateNext() {
+            if (currentQuizIndex < quizPool.length - 1) {
+                currentQuizIndex++;
+                renderQuestion();
+                updateNavigationGrid();
+            } else {
+                showToast("You have reached the final question.", "info");
+            }
+        }
+
+        // EXIT LOBBY (Uses Custom Confirm Dialog)
+        function quitExamLobby() {
+            const desc = isExamMode ? "Are you sure you want to exit? Your exam progress will be lost." : "Return back to the Home Lobby?";
+            showCustomConfirm(
+                "Quit Active Session?",
+                desc,
+                () => {
+                    if (examTimerInterval) clearInterval(examTimerInterval);
+                    showScreen('screen-home');
+                }
+            );
+        }
+
+        // EXAM SUBMISSION CONVERSION (Uses Custom Confirm Dialog)
+        function confirmExamSubmission() {
+            const unanswered = quizPool.length - Object.keys(userSelectedAnswers).length;
+            let desc = "Are you sure you wish to submit your answers for evaluation?";
+            if (unanswered > 0) {
+                desc = `You have ${unanswered} unanswered questions remaining. Are you sure you want to submit anyway?`;
+            }
+
+            showCustomConfirm(
+                "Submit Examination?",
+                desc,
+                () => {
+                    submitExamForGrading();
+                }
+            );
+        }
+
+        function autoSubmitExam() {
+            showToast("Time expired! Automatically submitting.", "error");
+            submitExamForGrading();
+        }
+
+        // Automatic grading logic
+        function submitExamForGrading() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            showLoader("Grading Examination", "Compiling results and computing score profile.");
+
+            let correctCount = 0;
+            quizPool.forEach(q => {
+                if (userSelectedAnswers[q.id] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const score = correctCount * 2; 
+            const totalMaxScore = quizPool.length * 2;
+            const percentage = Math.round((score / totalMaxScore) * 100);
+
+            let grade = "Pass";
+            if (percentage >= 90) grade = "Outstanding";
+            else if (percentage >= 75) grade = "Excellent";
+            else if (percentage >= 60) grade = "Very Good";
+            else if (percentage >= passingThreshold) grade = "Pass";
+            else grade = "Fail";
+
+            const minLeft = Math.floor(examTimeRemaining / 60);
+            const secLeft = examTimeRemaining % 60;
+            const timerUsed = isExamMode ? `${minLeft}:${secLeft.toString().padStart(2, '0')}` : "Self-Paced";
+
+            const submissionRecord = {
+                id: `S-${Math.floor(1000 + Math.random() * 9000)}`,
+                user: currentUser ? currentUser.username : "Anonymous Candidate",
+                type: isExamMode ? "Exam" : "Practice",
+                score: score,
+                percentage: percentage,
+                grade: grade,
+                timerLeft: timerUsed
+            };
+
+            testSubmissions.push(submissionRecord);
+            localStorage.setItem('prepmaster_cbt_submissions', JSON.stringify(testSubmissions));
+
+            document.getElementById('res-score').textContent = `${score} / ${totalMaxScore}`;
+            document.getElementById('res-percentage').textContent = `${percentage}%`;
+            document.getElementById('res-grade').textContent = grade;
+            document.getElementById('res-correct').textContent = correctCount;
+            document.getElementById('res-wrong').textContent = quizPool.length - correctCount;
+
+            const gradeBadge = document.getElementById('res-grade');
+            if (percentage >= passingThreshold) {
+                gradeBadge.className = "text-lg font-extrabold text-emerald-600 dark:text-emerald-400";
+            } else {
+                gradeBadge.className = "text-lg font-extrabold text-rose-600 dark:text-rose-400";
+            }
+
+            setTimeout(() => {
+                hideLoader();
+                showScreen('screen-results');
+                drawScoreGauge(percentage);
+            }, 1000);
+        }
+
+        // Draw Score Visual Widget using HTML Canvas API
+        function drawScoreGauge(percentage) {
+            const canvas = document.getElementById('scoreCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const r = 60;
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+            ctx.lineWidth = 12;
+            ctx.strokeStyle = '#e2e8f0'; 
+            ctx.stroke();
+
+            const isPassing = percentage >= passingThreshold;
+            const colorProgress = isPassing ? '#10b981' : '#f43f5e';
+
+            ctx.beginPath();
+            const startAngle = -0.5 * Math.PI;
+            const endAngle = startAngle + (2 * Math.PI * (percentage / 100));
+            ctx.arc(cx, cy, r, startAngle, endAngle);
+            ctx.lineWidth = 12;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = colorProgress;
+            ctx.stroke();
+
+            ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#ffffff' : '#0f172a';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = 'bold 24px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(`${percentage}%`, cx, cy - 5);
+
+            ctx.font = '600 10px "Plus Jakarta Sans", sans-serif';
+            ctx.fillStyle = isPassing ? '#059669' : '#e11d48';
+            ctx.fillText(isPassing ? 'PASSED' : 'FAILED', cx, cy + 18);
+        }
+
+        // Scroll review view
+        function showAnswerReview() {
+            const container = document.getElementById('review-list-container');
+            container.innerHTML = '';
+
+            quizPool.forEach((q, index) => {
+                const selected = userSelectedAnswers[q.id];
+                const isCorrect = selected === q.answer;
+                
+                const card = document.createElement('div');
+                card.className = `p-5 rounded-2xl border ${isCorrect ? 'border-emerald-100 bg-emerald-50/20 dark:border-emerald-950/20' : selected === undefined ? 'border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/40' : 'border-rose-100 bg-rose-50/20 dark:border-rose-950/20'} space-y-4`;
+
+                let headerBadge = "";
+                if (isCorrect) {
+                    headerBadge = `<span class="px-2.5 py-0.5 bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 rounded text-xs font-bold">Correct (+2)</span>`;
+                } else if (selected === undefined) {
+                    headerBadge = `<span class="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded text-xs font-bold">Skipped (0)</span>`;
+                } else {
+                    headerBadge = `<span class="px-2.5 py-0.5 bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300 rounded text-xs font-bold">Incorrect (0)</span>`;
+                }
+
+                let optionsListHtml = "";
+                Object.keys(q.options).forEach(key => {
+                    const optionVal = q.options[key];
+                    let lineStyle = "p-3 rounded-xl border flex items-center gap-3 text-xs font-semibold ";
+
+                    if (key === q.answer) {
+                        lineStyle += "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400";
+                    } else if (key === selected) {
+                        lineStyle += "border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-400";
+                    } else {
+                        lineStyle += "border-slate-100 dark:border-slate-800 text-slate-500";
+                    }
+
+                    optionsListHtml += `
+                        <div class="${lineStyle}">
+                            <span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-[10px] ${key === q.answer ? 'bg-emerald-600 text-white' : key === selected ? 'bg-rose-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}">${key}</span>
+                            <span>${optionVal}</span>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-4 flex-wrap">
+                        <span class="text-xs text-brand-600 font-bold uppercase">Question ${index + 1}</span>
+                        ${headerBadge}
+                    </div>
+                    <h3 class="font-bold text-sm leading-relaxed">${q.q}</h3>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                        ${optionsListHtml}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            showScreen('screen-review');
+        }
+
+        // History logs dashboard logic
+        function showHistoryScreen() {
+            const tableContainer = document.getElementById('history-table-container');
+            tableContainer.innerHTML = '';
+
+            const userAttempts = testSubmissions.filter(item => {
+                if (!currentUser) return true;
+                return item.user === currentUser.username;
+            });
+
+            if (userAttempts.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="p-8 text-center bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl">
+                        <i data-lucide="folder-open" class="w-12 h-12 text-slate-300 mx-auto mb-3"></i>
+                        <h4 class="font-bold text-sm">No History Found</h4>
+                        <p class="text-xs text-slate-400 mt-1">Complete a test simulator trial to log scores here!</p>
+                    </div>
+                `;
+                showScreen('screen-history');
+                drawTrendChart([]);
+                return;
+            }
+
+            userAttempts.forEach(record => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-950 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-between gap-4 text-xs shadow-sm";
+
+                const isPassing = record.percentage >= passingThreshold;
+
+                card.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-slate-900 dark:text-white">Session ID: ${record.id}</span>
+                            <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded text-[10px] uppercase font-bold">${record.type}</span>
+                        </div>
+                        <span class="text-slate-400 block font-medium">Remaining: ${record.timerLeft}</span>
+                    </div>
+                    <div class="text-right space-y-1">
+                        <strong class="text-sm font-extrabold ${isPassing ? 'text-emerald-500' : 'text-rose-500'}">${record.score} / 200 (${record.percentage}%)</strong>
+                        <span class="block font-semibold uppercase tracking-wider text-[10px] text-slate-400">${record.grade}</span>
+                    </div>
+                `;
+
+                tableContainer.appendChild(card);
+            });
+
+            showScreen('screen-history');
+            drawTrendChart(userAttempts);
+            lucide.createIcons();
+        }
+
+        // Draw dynamic Canvas Trend Line charts inside dashboard history page
+        function drawTrendChart(data) {
+            const canvas = document.getElementById('trendCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (data.length === 0) {
+                ctx.fillStyle = '#64748b';
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.font = '12px "Plus Jakarta Sans"';
+                ctx.fillText("Complete evaluations to render growth metrics graphics", canvas.width/2, canvas.height/2);
+                return;
+            }
+
+            const points = data.map(d => d.percentage);
+            const padding = 20;
+            const w = canvas.width - 2*padding;
+            const h = canvas.height - 2*padding;
+            
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+
+            const count = points.length;
+            const dx = count > 1 ? w / (count - 1) : w;
+
+            ctx.strokeStyle = '#8b5cf6'; 
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+
+            points.forEach((p, idx) => {
+                const x = padding + (idx * dx);
+                const y = (canvas.height - padding) - (h * (p / 100));
+
+                if (idx === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+
+            points.forEach((p, idx) => {
+                const x = padding + (idx * dx);
+                const y = (canvas.height - padding) - (h * (p / 100));
+
+                ctx.fillStyle = '#7c3aed';
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+
+                ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#94a3b8' : '#475569';
+                ctx.font = 'bold 9px "Plus Jakarta Sans"';
+                ctx.fillText(`${p}%`, x - 8, y - 10);
+            });
+        }
+
+        // Clear History (Uses Custom Confirm Dialog)
+        function handleClearHistory() {
+            showCustomConfirm(
+                "Clear Attempt History?",
+                "This action will permanently wipe all local assessment telemetry records.",
+                () => {
+                    testSubmissions = [];
+                    localStorage.removeItem('prepmaster_cbt_submissions');
+                    showHistoryScreen();
+                    showToast("History logs cleared successfully.", "info");
+                }
+            );
+        }
+
+        // Show Admin dashboard console
+        function showAdminScreen() {
+            const total = testSubmissions.length;
+            document.getElementById('admin-total-subs').textContent = total;
+
+            if (total > 0) {
+                const avg = Math.round(testSubmissions.reduce((acc, curr) => acc + curr.score, 0) / total);
+                const passCount = testSubmissions.filter(item => item.percentage >= passingThreshold).length;
+                const max = Math.max(...testSubmissions.map(item => item.score));
+
+                document.getElementById('admin-avg-score').textContent = `${avg} / 200`;
+                document.getElementById('admin-pass-rate').textContent = `${Math.round((passCount / total) * 100)}%`;
+                document.getElementById('admin-max-score').textContent = `${max} / 200`;
+            } else {
+                document.getElementById('admin-avg-score').textContent = "0 / 200";
+                document.getElementById('admin-pass-rate').textContent = "0%";
+                document.getElementById('admin-max-score').textContent = "0 / 200";
+            }
+
+            document.getElementById('admin-timer-input').value = timerConfig;
+            document.getElementById('admin-pass-input').value = passingThreshold;
+            document.getElementById('admin-shuffle-check').checked = shuffleEnabled;
+
+            const tbody = document.getElementById('admin-submissions-tbody');
+            tbody.innerHTML = '';
+
+            if (testSubmissions.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-slate-400">No records inside database logs</td></tr>`;
+            } else {
+                [...testSubmissions].reverse().forEach(record => {
+                    const row = document.createElement('tr');
+                    row.className = "border-b border-slate-100 dark:border-slate-900";
+                    
+                    const isPassing = record.percentage >= passingThreshold;
+                    const gradeColor = isPassing ? 'text-emerald-500' : 'text-rose-500';
+
+                    row.innerHTML = `
+                        <td class="py-3 px-2 font-semibold text-slate-900 dark:text-white">${record.user}</td>
+                        <td class="py-3 px-2 text-slate-400">${record.type}</td>
+                        <td class="py-3 px-2 font-extrabold ${gradeColor}">${record.score} / 200</td>
+                        <td class="py-3 px-2 font-bold ${gradeColor}">${record.grade}</td>
+                        <td class="py-3 px-2 text-slate-400 font-mono">${record.timerLeft}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            showScreen('screen-admin');
+        }
+
+        // RESET DATABASE LOGS (Uses Custom Confirm Dialog)
+        function resetDatabase() {
+            showCustomConfirm(
+                "Reset Simulation Database?",
+                "This action clears all logs across both mock data and real student history files.",
+                () => {
+                    localStorage.removeItem('prepmaster_cbt_submissions');
+                    testSubmissions = [];
+                    showToast("System database cleared successfully.", "success");
+                    showAdminScreen();
+                }
+            );
+        }
+
+        // Apply admin configuration parameters
+        function saveAdminSettings() {
+            const min = parseInt(document.getElementById('admin-timer-input').value);
+            const pass = parseInt(document.getElementById('admin-pass-input').value);
+            const shuffle = document.getElementById('admin-shuffle-check').checked;
+
+            if (isNaN(min) || min < 5 || min > 180) {
+                showToast("Timer configuration must stay between 5 and 180 minutes.", "error");
+                return;
+            }
+
+            if (isNaN(pass) || pass < 30 || pass > 90) {
+                showToast("Passing percentage must stay between 30 and 90%.", "error");
+                return;
+            }
+
+            timerConfig = min;
+            passingThreshold = pass;
+            shuffleEnabled = shuffle;
+
+            const settingsObj = { timerConfig, passingThreshold, shuffleEnabled };
+            localStorage.setItem('prepmaster_cbt_settings', JSON.stringify(settingsObj));
+
+            showToast("Simulator parameters updated successfully!", "success");
+            showScreen('screen-home');
+        }
+
+        // Custom Overlay spinners
+        function showLoader(title, description) {
+            document.getElementById('loader-title').textContent = title;
+            document.getElementById('loader-desc').textContent = description;
+            document.getElementById('loader-overlay').classList.remove('hidden');
+        }
+
+        function hideLoader() {
+            document.getElementById('loader-overlay').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
