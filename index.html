@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrepMaster - CBT Computer Fundamentals Exam</title>
+    <title>Taraba state university - CBT Computer Fundamentals Exam</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Tailwind Config for Theme Support -->
@@ -149,7 +149,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-xl"><i data-lucide="award" class="w-6 h-6"></i></div>
-                    <div><span class="text-xs text-slate-400 block font-semibold">Total Questions</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">100 MCQs</span></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Total Questions</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">100 / 45 MCQs</span></div>
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-xl"><i data-lucide="clock" class="w-6 h-6"></i></div>
@@ -161,12 +161,12 @@
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 rounded-xl"><i data-lucide="percent" class="w-6 h-6"></i></div>
-                    <div><span class="text-xs text-slate-400 block font-semibold">Max Score possible</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">200 Marks</span></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Max Score</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">Up to 200</span></div>
                 </div>
             </div>
 
-            <!-- Mode Chooser -->
-            <div class="grid md:grid-cols-2 gap-6">
+            <!-- Mode Chooser (Now updated to 3 Cards) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Mode 1: Exam -->
                 <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-brand-500 hover:shadow-lg transition-all group">
                     <div class="space-y-4">
@@ -176,11 +176,11 @@
                             </div>
                             <span class="px-3 py-1 bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 text-xs font-bold rounded-full">Strict Rules</span>
                         </div>
-                        <h3 class="text-xl font-bold">Exam Simulator Mode</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Run a strict exam environment. Shuffle all questions, lock a 45-minute countdown, navigate back and forth, bookmark issues for review, and submit for automatic instant evaluation.</p>
+                        <h3 class="text-xl font-bold">Exam Simulator</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Run a strict exam environment. Shuffle all 100 questions, lock a 45-minute countdown, navigate back and forth, bookmark issues for review, and submit for automatic instant evaluation.</p>
                     </div>
                     <button id="start-exam-btn" class="mt-6 w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                        Launch Exam Mode <i data-lucide="play-circle" class="w-4 h-4"></i>
+                        Launch Exam <i data-lucide="play-circle" class="w-4 h-4"></i>
                     </button>
                 </div>
 
@@ -193,11 +193,28 @@
                             </div>
                             <span class="px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 text-xs font-bold rounded-full">Self-Paced</span>
                         </div>
-                        <h3 class="text-xl font-bold">Interactive Practice Mode</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice at your own speed with no ticking clocks. Choose your range of questions, receive instant visual correction, explanations, and track progress interactively.</p>
+                        <h3 class="text-xl font-bold">Practice Mode</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice at your own speed with the 100 master questions. No ticking clocks. Receive instant visual correction, explanations, and track your progress interactively.</p>
                     </div>
                     <button id="start-practice-btn" class="mt-6 w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                        Launch Practice Mode <i data-lucide="book-open" class="w-4 h-4"></i>
+                        Launch Practice <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Mode 3: Memory Boost (NEW) -->
+                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-cyan-500 hover:shadow-lg transition-all group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="p-4 bg-cyan-50 dark:bg-cyan-950/40 text-cyan-600 dark:text-cyan-400 rounded-2xl group-hover:scale-110 transition-transform">
+                                <i data-lucide="zap" class="w-8 h-8"></i>
+                            </div>
+                            <span class="px-3 py-1 bg-cyan-100 text-cyan-700 dark:bg-cyan-900/50 dark:text-cyan-300 text-xs font-bold rounded-full">Active Recall</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Memory Boost</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Master the material using a specialized subset of 45 past questions. Run a self-paced mock exam to lock in your knowledge before taking the real exam simulator.</p>
+                    </div>
+                    <button id="start-memory-btn" class="mt-6 w-full py-3.5 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Launch Memory Boost <i data-lucide="zap" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -319,7 +336,7 @@
                     </div>
 
                     <div class="space-y-2 relative z-10">
-                        <h2 class="text-3xl font-extrabold tracking-tight">Exam Complete!</h2>
+                        <h2 class="text-3xl font-extrabold tracking-tight">Session Complete!</h2>
                         <p class="text-slate-500 dark:text-slate-400 text-sm">Here is a deep dive analysis of your performance.</p>
                     </div>
 
@@ -430,16 +447,16 @@
                     <strong class="text-2xl font-extrabold" id="admin-total-subs">12</strong>
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Average Score</span>
-                    <strong class="text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="admin-avg-score">142 / 200</strong>
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Average Score %</span>
+                    <strong class="text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="admin-avg-score">71%</strong>
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
                     <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Pass Rate (>= 50%)</span>
                     <strong class="text-2xl font-extrabold text-emerald-500" id="admin-pass-rate">85%</strong>
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
-                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Highest Score</span>
-                    <strong class="text-2xl font-extrabold text-indigo-500" id="admin-max-score">196 / 200</strong>
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block">Highest Score %</span>
+                    <strong class="text-2xl font-extrabold text-indigo-500" id="admin-max-score">98%</strong>
                 </div>
             </div>
 
@@ -510,7 +527,7 @@
         </div>
     </div>
 
-    <!-- Custom Confirm Dialog Modal (Bypasses Sandbox Iframe Blockers) -->
+    <!-- Custom Confirm Dialog Modal -->
     <div id="custom-confirm-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-2xl max-w-sm w-full border border-slate-200 dark:border-slate-800 text-center space-y-4 transform transition-all duration-300 scale-95 opacity-0" id="confirm-modal-box">
             <div class="mx-auto w-12 h-12 bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center">
@@ -533,6 +550,7 @@
         let shuffleEnabled = true;
 
         let currentUser = null;
+        let currentMode = 'exam'; // 'exam', 'practice', or 'memory'
         let isExamMode = false;
         let examTimeRemaining = timerConfig * 60; // in seconds
         let examTimerInterval = null;
@@ -543,1116 +561,169 @@
         let userSelectedAnswers = {}; 
         let flaggedQuestions = {}; 
 
+        // -------------------------------------------------------------
         // Master Questions array (All 100 MCQs from PDF)
+        // -------------------------------------------------------------
         const masterQuestions = [
-            {
-                id: 1,
-                q: "UNIVAC is",
-                options: {
-                    A: "Universal Automatic Computer",
-                    B: "Universal Array Computer",
-                    C: "Unique Automatic Computer",
-                    D: "Unvalued Automatic Computer"
-                },
-                answer: "A"
-            },
-            {
-                id: 2,
-                q: "The basic operations performed by a computer are",
-                options: {
-                    A: "Arithmetic operation",
-                    B: "Logical operation",
-                    C: "Storage and relative",
-                    D: "All the above"
-                },
-                answer: "D"
-            },
-            {
-                id: 3,
-                q: "The two major types of computer chips are",
-                options: {
-                    A: "External memory chip",
-                    B: "Primary memory chip",
-                    C: "Microprocessor chip",
-                    D: "Both b and c"
-                },
-                answer: "D"
-            },
-            {
-                id: 4,
-                q: "Microprocessors as switching devices are for which generation computers",
-                options: {
-                    A: "First Generation",
-                    B: "Second Generation",
-                    C: "Third Generation",
-                    D: "Fourth Generation"
-                },
-                answer: "D"
-            },
-            {
-                id: 5,
-                q: "What is the main difference between a mainframe and a super computer?",
-                options: {
-                    A: "Super computer is much larger than mainframe computers",
-                    B: "Super computers are much smaller than mainframe computers",
-                    C: "Supercomputers are focused to execute few programs as fast as possible while mainframe uses its power to execute as many programs concurrently",
-                    D: "Supercomputers are focused to execute as many programs as possible while mainframe uses its power to execute few programs as fast as possible."
-                },
-                answer: "C"
-            },
-            {
-                id: 6,
-                q: "ASCII and EBCDIC are the popular character coding systems. What does EBCDIC stand for?",
-                options: {
-                    A: "Extended Binary Coded Decimal Interchange Code",
-                    B: "Extended Bit Code Decimal Interchange Code",
-                    C: "Extended Bit Case Decimal Interchange Code",
-                    D: "Extended Binary Case Decimal Interchange Code"
-                },
-                answer: "A"
-            },
-            {
-                id: 7,
-                q: "The brain of any computer system is",
-                options: {
-                    A: "ALU",
-                    B: "Memory",
-                    C: "CPU",
-                    D: "Control unit"
-                },
-                answer: "C"
-            },
-            {
-                id: 8,
-                q: "Storage capacity of magnetic disk depends on",
-                options: {
-                    A: "tracks per inch of surface",
-                    B: "bits per inch of tracks",
-                    C: "disk pack in disk surface",
-                    D: "All of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 9,
-                q: "The two kinds of main memory are:",
-                options: {
-                    A: "Primary and secondary",
-                    B: "Random and sequential",
-                    C: "ROM and RAM",
-                    D: "All of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 10,
-                q: "A storage area used to store data to compensate for the difference in speed at which the different units can handle data is",
-                options: {
-                    A: "Memory",
-                    B: "Buffer",
-                    C: "Accumulator",
-                    D: "Address"
-                },
-                answer: "B"
-            },
-            {
-                id: 11,
-                q: "Computer is free from tiresome and boredom. We call it",
-                options: {
-                    A: "Accuracy",
-                    B: "Reliability",
-                    C: "Diligence",
-                    D: "Versatility"
-                },
-                answer: "C"
-            },
-            {
-                id: 12,
-                q: "Integrated Circuits (ICs) are related to which generation of computers?",
-                options: {
-                    A: "First generation",
-                    B: "Second generation",
-                    C: "Third generation",
-                    D: "Fourth generation"
-                },
-                answer: "C"
-            },
-            {
-                id: 13,
-                q: "CD-ROM is a",
-                options: {
-                    A: "Semiconductor memory",
-                    B: "Memory register",
-                    C: "Magnetic memory",
-                    D: "None of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 14,
-                q: "A hybrid computer",
-                options: {
-                    A: "Resembles digital computer",
-                    B: "Resembles analogue computer",
-                    C: "Resembles both a digital and analogue computer",
-                    D: "None of the above"
-                },
-                answer: "C"
-            },
-            {
-                id: 15,
-                q: "Which type of computers uses the 8-bit code called EBCDIC?",
-                options: {
-                    A: "Minicomputers",
-                    B: "Microcomputers",
-                    C: "Mainframe computers",
-                    D: "Super computer"
-                },
-                answer: "C"
-            },
-            {
-                id: 16,
-                q: "The ALU of a computer responds to the commands coming from",
-                options: {
-                    A: "Primary memory",
-                    B: "Control section",
-                    C: "External memory",
-                    D: "Cache memory"
-                },
-                answer: "B"
-            },
-            {
-                id: 17,
-                q: "Chief component of first generation computer was",
-                options: {
-                    A: "Transistors",
-                    B: "Vacuum Tubes and Valves",
-                    C: "Integrated Circuits",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 18,
-                q: "To produce high quality graphics (hardcopy) in color, you would want to use a/n",
-                options: {
-                    A: "RGB monitor",
-                    B: "Plotter",
-                    C: "Ink-jet printer",
-                    D: "Laser printer"
-                },
-                answer: "B"
-            },
-            {
-                id: 19,
-                q: "What are the stages in the compilation process?",
-                options: {
-                    A: "Feasibility study, system design and testing",
-                    B: "Implementation and documentation",
-                    C: "Lexical Analysis, syntax analysis, and code generation",
-                    D: "None of the above"
-                },
-                answer: "C"
-            },
-            {
-                id: 20,
-                q: "Which of the following IC was used in third generation of computers?",
-                options: {
-                    A: "SSI",
-                    B: "MSI",
-                    C: "LSI",
-                    D: "Both a and b"
-                },
-                answer: "D"
-            },
-            {
-                id: 21,
-                q: "The main electronic component used in first generation computers was",
-                options: {
-                    A: "Transistors",
-                    B: "Vacuum Tubes and Valves",
-                    C: "Integrated Circuits",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 22,
-                q: "A dumb terminal has",
-                options: {
-                    A: "an embedded microprocessor",
-                    B: "extensive memory",
-                    C: "independent processing capability",
-                    D: "a keyboard and screen"
-                },
-                answer: "D"
-            },
-            {
-                id: 23,
-                q: "One millisecond is",
-                options: {
-                    A: "1 second",
-                    B: "10th of a seconds",
-                    C: "1000th of a seconds",
-                    D: "10000th of a seconds"
-                },
-                answer: "C"
-            },
-            {
-                id: 24,
-                q: "The output quality of a printer is measured by",
-                options: {
-                    A: "Dot per sq. inch",
-                    B: "Dot per inch",
-                    C: "Dots printed per unit time",
-                    D: "All of the above"
-                },
-                answer: "A"
-            },
-            {
-                id: 25,
-                q: "Which of the following was a special purpose computer?",
-                options: {
-                    A: "ABC",
-                    B: "ENIAC",
-                    C: "EDVAC",
-                    D: "All of the above"
-                },
-                answer: "A"
-            },
-            {
-                id: 26,
-                q: "What was the computer invented by Attanasoff and Clifford?",
-                options: {
-                    A: "Mark I",
-                    B: "ABC",
-                    C: "Z3",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 27,
-                q: "Which of the following storage devices can store maximum amount of data?",
-                options: {
-                    A: "Floppy Disk",
-                    B: "Hard Disk",
-                    C: "Compact Disk",
-                    D: "Magneto Optic Disk"
-                },
-                answer: "B"
-            },
-            {
-                id: 28,
-                q: "Which computer was considered the first electronic computer until 1973 when court invalidated the patent?",
-                options: {
-                    A: "ENIAC",
-                    B: "MARK I",
-                    C: "Z3",
-                    D: "ABC"
-                },
-                answer: "A"
-            },
-            {
-                id: 29,
-                q: "A physical connection between the microprocessor memory and other parts of the microcomputer is known as",
-                options: {
-                    A: "Path",
-                    B: "Address bus",
-                    C: "Route",
-                    D: "All of the above"
-                },
-                answer: "B"
-            },
-            {
-                id: 30,
-                q: "High density double sided floppy disks could store _________ of data",
-                options: {
-                    A: "1.40 MB",
-                    B: "1.44 GB",
-                    C: "1.40 GB",
-                    D: "1.44 MB"
-                },
-                answer: "D"
-            },
-            {
-                id: 31,
-                q: "A high quality CAD system uses the following for printing drawing and graphs",
-                options: {
-                    A: "Dot matrix printer",
-                    B: "Digital plotter",
-                    C: "Line printer",
-                    D: "All of the above"
-                },
-                answer: "B"
-            },
-            {
-                id: 32,
-                q: "Which of the following is not an input device?",
-                options: {
-                    A: "OCR",
-                    B: "Optical scanners",
-                    C: "Voice recognition device",
-                    D: "COM (Computer Output to Microfilm)"
-                },
-                answer: "D"
-            },
-            {
-                id: 33,
-                q: "The accuracy of the floating-point numbers representable in two 16-bit words of a computer is approximately",
-                options: {
-                    A: "16 digits",
-                    B: "6 digits",
-                    C: "9 digits",
-                    D: "All of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 34,
-                q: "In most of the IBM PCs, the CPU, the device drivers, memory, expansion slots and active components are mounted on a single board. What is the name of the board?",
-                options: {
-                    A: "Motherboard",
-                    B: "Daughterboard",
-                    C: "Breadboard",
-                    D: "Fatherboard"
-                },
-                answer: "A"
-            },
-            {
-                id: 35,
-                q: "In most IBM PCs, the CPU, the device drives, memory expansion slots and active components are mounted on a single board. What is the name of this board?",
-                options: {
-                    A: "Motherboard",
-                    B: "Breadboard",
-                    C: "Daughter board",
-                    D: "Grandmother board"
-                },
-                answer: "A"
-            },
-            {
-                id: 36,
-                q: "Magnetic disks are the most popular medium for",
-                options: {
-                    A: "Direct access",
-                    B: "Sequential access",
-                    C: "Both of above",
-                    D: "None of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 37,
-                q: "A technique used by codes to convert an analog signal into a digital bit stream is known as",
-                options: {
-                    A: "Pulse code modulation",
-                    B: "Pulse stretcher",
-                    C: "Query processing",
-                    D: "Queue management"
-                },
-                answer: "A"
-            },
-            {
-                id: 38,
-                q: "Regarding a VDU, Which statement is more correct?",
-                options: {
-                    A: "It is an output device",
-                    B: "It is an input device",
-                    C: "It is a peripheral device",
-                    D: "It is hardware item"
-                },
-                answer: "C"
-            },
-            {
-                id: 39,
-                q: "A modern electronic computer is a machine that is meant for",
-                options: {
-                    A: "Doing quick mathematical calculations",
-                    B: "Input, storage, manipulation and outputting of data",
-                    C: "Electronic data processing",
-                    D: "Performing repetitive tasks accurately"
-                },
-                answer: "B"
-            },
-            {
-                id: 40,
-                q: "When was vacuum tube invented?",
-                options: {
-                    A: "1900",
-                    B: "1906",
-                    C: "1910",
-                    D: "1880"
-                },
-                answer: "B"
-            },
-            {
-                id: 41,
-                q: "Which of the following produces the best quality graphics reproduction?",
-                options: {
-                    A: "Laser printer",
-                    B: "Ink jet printer",
-                    C: "Plotter",
-                    D: "Dot matrix printer"
-                },
-                answer: "C"
-            },
-            {
-                id: 42,
-                q: "Computers with 80286 microprocessor is",
-                options: {
-                    A: "XT computer",
-                    B: "AT computers",
-                    C: "PS/2 computer",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 43,
-                q: "An application suitable for sequential processing is",
-                options: {
-                    A: "Processing of grades",
-                    B: "Payroll processing",
-                    C: "Both a and b",
-                    D: "All of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 44,
-                q: "Which of the following is not processing?",
-                options: {
-                    A: "arranging",
-                    B: "manipulating",
-                    C: "calculating",
-                    D: "gathering"
-                },
-                answer: "D"
-            },
-            {
-                id: 45,
-                q: "The digital computer was developed primarily in",
-                options: {
-                    A: "USSR",
-                    B: "Japan",
-                    C: "USA",
-                    D: "UK"
-                },
-                answer: "C"
-            },
-            {
-                id: 46,
-                q: "Software in computer",
-                options: {
-                    A: "Enhances the capabilities of the hardware machine",
-                    B: "Increase the speed of central processing unit",
-                    C: "Both of above",
-                    D: "None of above"
-                },
-                answer: "A"
-            },
-            {
-                id: 47,
-                q: "Today's computer giant IBM was earlier known by different name which was changed in 1924. What was that name?",
-                options: {
-                    A: "Tabulator Machine Co.",
-                    B: "Computing Tabulating Recording Co.",
-                    C: "The Tabulator Ltd.",
-                    D: "International Computer Ltd."
-                },
-                answer: "B"
-            },
-            {
-                id: 48,
-                q: "Before a disk drive can access any sector record, a computer program has to provide the record's disk address. What information does this address specify?",
-                options: {
-                    A: "Track number",
-                    B: "Sector number",
-                    C: "Surface number",
-                    D: "All of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 49,
-                q: "The arranging of data in a logical sequence is called",
-                options: {
-                    A: "Sorting",
-                    B: "Classifying",
-                    C: "Reproducing",
-                    D: "Summarizing"
-                },
-                answer: "A"
-            },
-            {
-                id: 50,
-                q: "What is the responsibility of the logical unit in the CPU of a computer?",
-                options: {
-                    A: "To produce result",
-                    B: "To compare numbers",
-                    C: "To control flow of information",
-                    D: "To do math's works"
-                },
-                answer: "B"
-            },
-            {
-                id: 51,
-                q: "Abacus was the first",
-                options: {
-                    A: "electronic computer",
-                    B: "mechanical computer",
-                    C: "electronic calculator",
-                    D: "mechanical calculator"
-                },
-                answer: "D"
-            },
-            {
-                id: 52,
-                q: "If in a computer, 16 bits are used to specify address in a RAM, the number of addresses will be",
-                options: {
-                    A: "216",
-                    B: "65,536",
-                    C: "64K",
-                    D: "Any of the above"
-                },
-                answer: "B"
-            },
-            {
-                id: 53,
-                q: "Instructions and memory address are represented by",
-                options: {
-                    A: "Character code",
-                    B: "Binary codes",
-                    C: "Binary word",
-                    D: "Parity bit"
-                },
-                answer: "B"
-            },
-            {
-                id: 54,
-                q: "The terminal device that functions as a cash register, computer terminal, and OCR reader is the:",
-                options: {
-                    A: "Data collection terminal",
-                    B: "OCR register terminal",
-                    C: "Video Display terminal",
-                    D: "POS terminal"
-                },
-                answer: "D"
-            },
-            {
-                id: 55,
-                q: "A set of flip flops integrated together is called",
-                options: {
-                    A: "Counter",
-                    B: "Adder",
-                    C: "Register",
-                    D: "None of the above"
-                },
-                answer: "C"
-            },
-            {
-                id: 56,
-                q: "People often call ________ as the brain of computer system",
-                options: {
-                    A: "Control Unit",
-                    B: "Arithmetic Logic Unit",
-                    C: "Central Processing Unit",
-                    D: "Storage Unit"
-                },
-                answer: "C"
-            },
-            {
-                id: 57,
-                q: "Which is used for manufacturing chips?",
-                options: {
-                    A: "Bus",
-                    B: "Control unit",
-                    C: "Semiconductors",
-                    D: "A and b only"
-                },
-                answer: "C"
-            },
-            {
-                id: 58,
-                q: "The value of each bead in heaven of an abacus is",
-                options: {
-                    A: "1",
-                    B: "3",
-                    C: "5",
-                    D: "7"
-                },
-                answer: "C"
-            },
-            {
-                id: 59,
-                q: "The first computer introduced in Nepal was",
-                options: {
-                    A: "IBM 1400",
-                    B: "IBM 1401",
-                    C: "IBM 1402",
-                    D: "IBM 1403"
-                },
-                answer: "B"
-            },
-            {
-                id: 60,
-                q: "Mnemonic a memory trick is used in which of the following language?",
-                options: {
-                    A: "Machine language",
-                    B: "Assembly language",
-                    C: "High level language",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 61,
-                q: "Instruction in computer languages consists of",
-                options: {
-                    A: "OPCODE",
-                    B: "OPERAND",
-                    C: "Both of above",
-                    D: "None of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 62,
-                q: "Which generation of computer is still under development",
-                options: {
-                    A: "Fourth Generation",
-                    B: "Fifth Generation",
-                    C: "Sixth Generation",
-                    D: "Seventh Generation"
-                },
-                answer: "B"
-            },
-            {
-                id: 63,
-                q: "A register organized to allow to move left or right operations is called a",
-                options: {
-                    A: "Counter",
-                    B: "Loader",
-                    C: "Adder",
-                    D: "Shift register"
-                },
-                answer: "D"
-            },
-            {
-                id: 64,
-                q: "Which was the most popular first generation computer?",
-                options: {
-                    A: "IBM 1650",
-                    B: "IBM 360",
-                    C: "IBM 1130",
-                    D: "IBM 2700"
-                },
-                answer: "A"
-            },
-            {
-                id: 65,
-                q: "Which is considered a direct entry input device?",
-                options: {
-                    A: "Optical scanner",
-                    B: "Mouse and digitizer",
-                    C: "Light pen",
-                    D: "All of the above"
-                },
-                answer: "D"
-            },
-            {
-                id: 66,
-                q: "A set of information that defines the status of resources allocated to a process is",
-                options: {
-                    A: "Process control",
-                    B: "ALU",
-                    C: "Register Unit",
-                    D: "Process description"
-                },
-                answer: "D"
-            },
-            {
-                id: 67,
-                q: "Each set of Napier's bones consisted of _______ rods.",
-                options: {
-                    A: "5",
-                    B: "9",
-                    C: "11",
-                    D: "13"
-                },
-                answer: "C"
-            },
-            {
-                id: 68,
-                q: "BCD is",
-                options: {
-                    A: "Binary Coded Decimal",
-                    B: "Bit Coded Decimal",
-                    C: "Binary Coded Digit",
-                    D: "Bit Coded Digit"
-                },
-                answer: "A"
-            },
-            {
-                id: 69,
-                q: "When was the world's first laptop computer introduced in the market and by whom?",
-                options: {
-                    A: "Hewlett-Packard, 1980",
-                    B: "Epson, 1981",
-                    C: "Laplink Traveling Software Inc, 1982",
-                    D: "Tandy Model-200, 1985"
-                },
-                answer: "B"
-            },
-            {
-                id: 70,
-                q: "From which generation operating systems were developed?",
-                options: {
-                    A: "First",
-                    B: "Second",
-                    C: "Third",
-                    D: "Fourth"
-                },
-                answer: "C"
-            },
-            {
-                id: 71,
-                q: "The first firm to mass-market a microcomputer as a personal computer was",
-                options: {
-                    A: "IBM",
-                    B: "Super UNIVAC",
-                    C: "Radio Shack",
-                    D: "Data General Corporation"
-                },
-                answer: "C"
-            },
-            {
-                id: 72,
-                q: "How many address lines are needed to address each machine location in a 2048 x 4 memory chip?",
-                options: {
-                    A: "10",
-                    B: "11",
-                    C: "8",
-                    D: "12"
-                },
-                answer: "B"
-            },
-            {
-                id: 73,
-                q: "Properly arranged data is called",
-                options: {
-                    A: "Field",
-                    B: "Words",
-                    C: "Information",
-                    D: "File"
-                },
-                answer: "C"
-            },
-            {
-                id: 74,
-                q: "A computer consists of",
-                options: {
-                    A: "A central processing unit",
-                    B: "A memory",
-                    C: "Input and output unit",
-                    D: "All of the above"
-                },
-                answer: "D"
-            },
-            {
-                id: 75,
-                q: "Why are vacuum tubes also called valves?",
-                options: {
-                    A: "Because they can amplify weak signals and make them strong",
-                    B: "Because they can stop or allow the flow of current",
-                    C: "Both of above",
-                    D: "None of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 76,
-                q: "John Napier invented Logarithm in",
-                options: {
-                    A: "1614",
-                    B: "1617",
-                    C: "1620",
-                    D: "None of above"
-                },
-                answer: "A"
-            },
-            {
-                id: 77,
-                q: "An integrated circuit is",
-                options: {
-                    A: "A complicated circuit",
-                    B: "An integrating device",
-                    C: "Much costlier than a single transistor",
-                    D: "Fabricated on a tiny silicon chip"
-                },
-                answer: "D"
-            },
-            {
-                id: 78,
-                q: "What type of control pins are needed in a microprocessor to regulate traffic on the bus, in order to prevent two devices from trying to use it at the same time?",
-                options: {
-                    A: "Bus control",
-                    B: "Interrupts",
-                    C: "Bus arbitration",
-                    D: "Status"
-                },
-                answer: "C"
-            },
-            {
-                id: 79,
-                q: "Where as a computer mouse moves over the table surface, the trackball is",
-                options: {
-                    A: "Stationary",
-                    B: "Difficult to move",
-                    C: "Dragged",
-                    D: "Moved in small steps"
-                },
-                answer: "A"
-            },
-            {
-                id: 80,
-                q: "Which of the following is used as a primary storage device?",
-                options: {
-                    A: "Magnetic drum",
-                    B: "Hard Disks",
-                    C: "Floppy",
-                    D: "All of above"
-                },
-                answer: "A"
-            },
-            {
-                id: 81,
-                q: "Multi user systems provided cost savings for small business because they use a single processing unit to link several",
-                options: {
-                    A: "Personal computers",
-                    B: "Workstations",
-                    C: "Dumb terminals",
-                    D: "Mainframes"
-                },
-                answer: "C"
-            },
-            {
-                id: 82,
-                q: "What are the three decision making operations performed by the ALU of a computer?",
-                options: {
-                    A: "Greater than",
-                    B: "Less than",
-                    C: "Equal to",
-                    D: "All of the above"
-                },
-                answer: "D"
-            },
-            {
-                id: 83,
-                q: "The word processing task associated with changing the appearance of a document is",
-                options: {
-                    A: "Editing",
-                    B: "Writing",
-                    C: "Formatting",
-                    D: "All of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 84,
-                q: "Nepal brought a computer for census of 2028 BS. This computer was of",
-                options: {
-                    A: "first generation",
-                    B: "second generation",
-                    C: "third generation",
-                    D: "fourth generation"
-                },
-                answer: "B"
-            },
-            {
-                id: 85,
-                q: "Algorithm and Flow chart help us to",
-                options: {
-                    A: "Know the memory capacity",
-                    B: "Identify the base of a number system",
-                    C: "Direct the output to a printer",
-                    D: "Specify the problem completely and clearly"
-                },
-                answer: "D"
-            },
-            {
-                id: 86,
-                q: "Which statement is valid about computer program?",
-                options: {
-                    A: "It is understood by a computer",
-                    B: "It is understood by programmer",
-                    C: "It is understood by user",
-                    D: "Both a & b"
-                },
-                answer: "D"
-            },
-            {
-                id: 87,
-                q: "The difference between memory and storage is that memory is _____ and storage is _____",
-                options: {
-                    A: "Temporary, permanent",
-                    B: "Permanent, temporary",
-                    C: "Slow, fast",
-                    D: "All of above"
-                },
-                answer: "A"
-            },
-            {
-                id: 88,
-                q: "When was Pascaline invented?",
-                options: {
-                    A: "1617",
-                    B: "1620",
-                    C: "1642",
-                    D: "1837"
-                },
-                answer: "C"
-            },
-            {
-                id: 89,
-                q: "Which of the following statement is valid?",
-                options: {
-                    A: "Lady Augusta is the first programmer",
-                    B: "Ada is the daughter of Lord Byron, a famous English poet",
-                    C: "ADA is a programming language developed by US Defense",
-                    D: "All of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 90,
-                q: "A compiler is a translating program which",
-                options: {
-                    A: "Translates instruction of a high level language into machine language",
-                    B: "Translates entire source program into machine language program",
-                    C: "It is not involved in program's execution",
-                    D: "All of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 91,
-                q: "What is required when more than one person uses a central computer at the same time?",
-                options: {
-                    A: "Light pen",
-                    B: "Mouse",
-                    C: "Digitizer",
-                    D: "Terminal"
-                },
-                answer: "D"
-            },
-            {
-                id: 92,
-                q: "Which of the following is the first computer to use Stored Program Concept?",
-                options: {
-                    A: "UNIVAC",
-                    B: "ENIAC",
-                    C: "EDSAC",
-                    D: "None of above"
-                },
-                answer: "C"
-            },
-            {
-                id: 93,
-                q: "The term gigabyte refers to",
-                options: {
-                    A: "1024 bytes",
-                    B: "1024 kilobytes",
-                    C: "1024 megabytes",
-                    D: "1024 gigabyte"
-                },
-                answer: "C"
-            },
-            {
-                id: 94,
-                q: "In which year was UK's premier computing event called 'The Which Computer?' started?",
-                options: {
-                    A: "1980",
-                    B: "1985",
-                    C: "1986",
-                    D: "1987"
-                },
-                answer: "A"
-            },
-            {
-                id: 95,
-                q: "Once you load the suitable program and provide required data, computer does not need human intervention. This feature is known as",
-                options: {
-                    A: "Accuracy",
-                    B: "Reliability",
-                    C: "Versatility",
-                    D: "Automatic"
-                },
-                answer: "D"
-            },
-            {
-                id: 96,
-                q: "What is a brand?",
-                options: {
-                    A: "The name of companies that made computers",
-                    B: "The name of product a company gives to identify its product in market",
-                    C: "A name of class to indicate all similar products from different companies",
-                    D: "All of above"
-                },
-                answer: "B"
-            },
-            {
-                id: 97,
-                q: "Machine language is",
-                options: {
-                    A: "Machine dependent",
-                    B: "Difficult to program",
-                    C: "Error prone",
-                    D: "All of above"
-                },
-                answer: "D"
-            },
-            {
-                id: 98,
-                q: "A byte consists of",
-                options: {
-                    A: "One bit",
-                    B: "Four bits",
-                    C: "Eight bits",
-                    D: "Sixteen bits"
-                },
-                answer: "C"
-            },
-            {
-                id: 99,
-                q: "Modern Computers are very reliable but they are not",
-                options: {
-                    A: "Fast",
-                    B: "Powerful",
-                    C: "Infallible",
-                    D: "Cheap"
-                },
-                answer: "C"
-            },
-            {
-                id: 100,
-                q: "What is the date when Babbage conceived Analytical engine?",
-                options: {
-                    A: "1642",
-                    B: "1837",
-                    C: "1880",
-                    D: "1850"
-                },
-                answer: "B"
-            }
+            { id: 1, q: "UNIVAC is", options: { A: "Universal Automatic Computer", B: "Universal Array Computer", C: "Unique Automatic Computer", D: "Unvalued Automatic Computer" }, answer: "A" },
+            { id: 2, q: "The basic operations performed by a computer are", options: { A: "Arithmetic operation", B: "Logical operation", C: "Storage and relative", D: "All the above" }, answer: "D" },
+            { id: 3, q: "The two major types of computer chips are", options: { A: "External memory chip", B: "Primary memory chip", C: "Microprocessor chip", D: "Both b and c" }, answer: "D" },
+            { id: 4, q: "Microprocessors as switching devices are for which generation computers", options: { A: "First Generation", B: "Second Generation", C: "Third Generation", D: "Fourth Generation" }, answer: "D" },
+            { id: 5, q: "What is the main difference between a mainframe and a super computer?", options: { A: "Super computer is much larger than mainframe computers", B: "Super computers are much smaller than mainframe computers", C: "Supercomputers are focused to execute few programs as fast as possible while mainframe uses its power to execute as many programs concurrently", D: "Supercomputers are focused to execute as many programs as possible while mainframe uses its power to execute few programs as fast as possible." }, answer: "C" },
+            { id: 6, q: "ASCII and EBCDIC are the popular character coding systems. What does EBCDIC stand for?", options: { A: "Extended Binary Coded Decimal Interchange Code", B: "Extended Bit Code Decimal Interchange Code", C: "Extended Bit Case Decimal Interchange Code", D: "Extended Binary Case Decimal Interchange Code" }, answer: "A" },
+            { id: 7, q: "The brain of any computer system is", options: { A: "ALU", B: "Memory", C: "CPU", D: "Control unit" }, answer: "C" },
+            { id: 8, q: "Storage capacity of magnetic disk depends on", options: { A: "tracks per inch of surface", B: "bits per inch of tracks", C: "disk pack in disk surface", D: "All of above" }, answer: "D" },
+            { id: 9, q: "The two kinds of main memory are:", options: { A: "Primary and secondary", B: "Random and sequential", C: "ROM and RAM", D: "All of above" }, answer: "C" },
+            { id: 10, q: "A storage area used to store data to compensate for the difference in speed at which the different units can handle data is", options: { A: "Memory", B: "Buffer", C: "Accumulator", D: "Address" }, answer: "B" },
+            { id: 11, q: "Computer is free from tiresome and boredom. We call it", options: { A: "Accuracy", B: "Reliability", C: "Diligence", D: "Versatility" }, answer: "C" },
+            { id: 12, q: "Integrated Circuits (ICs) are related to which generation of computers?", options: { A: "First generation", B: "Second generation", C: "Third generation", D: "Fourth generation" }, answer: "C" },
+            { id: 13, q: "CD-ROM is a", options: { A: "Semiconductor memory", B: "Memory register", C: "Magnetic memory", D: "None of above" }, answer: "D" },
+            { id: 14, q: "A hybrid computer", options: { A: "Resembles digital computer", B: "Resembles analogue computer", C: "Resembles both a digital and analogue computer", D: "None of the above" }, answer: "C" },
+            { id: 15, q: "Which type of computers uses the 8-bit code called EBCDIC?", options: { A: "Minicomputers", B: "Microcomputers", C: "Mainframe computers", D: "Super computer" }, answer: "C" },
+            { id: 16, q: "The ALU of a computer responds to the commands coming from", options: { A: "Primary memory", B: "Control section", C: "External memory", D: "Cache memory" }, answer: "B" },
+            { id: 17, q: "Chief component of first generation computer was", options: { A: "Transistors", B: "Vacuum Tubes and Valves", C: "Integrated Circuits", D: "None of above" }, answer: "B" },
+            { id: 18, q: "To produce high quality graphics (hardcopy) in color, you would want to use a/n", options: { A: "RGB monitor", B: "Plotter", C: "Ink-jet printer", D: "Laser printer" }, answer: "B" },
+            { id: 19, q: "What are the stages in the compilation process?", options: { A: "Feasibility study, system design and testing", B: "Implementation and documentation", C: "Lexical Analysis, syntax analysis, and code generation", D: "None of the above" }, answer: "C" },
+            { id: 20, q: "Which of the following IC was used in third generation of computers?", options: { A: "SSI", B: "MSI", C: "LSI", D: "Both a and b" }, answer: "D" },
+            { id: 21, q: "The main electronic component used in first generation computers was", options: { A: "Transistors", B: "Vacuum Tubes and Valves", C: "Integrated Circuits", D: "None of above" }, answer: "B" },
+            { id: 22, q: "A dumb terminal has", options: { A: "an embedded microprocessor", B: "extensive memory", C: "independent processing capability", D: "a keyboard and screen" }, answer: "D" },
+            { id: 23, q: "One millisecond is", options: { A: "1 second", B: "10th of a seconds", C: "1000th of a seconds", D: "10000th of a seconds" }, answer: "C" },
+            { id: 24, q: "The output quality of a printer is measured by", options: { A: "Dot per sq. inch", B: "Dot per inch", C: "Dots printed per unit time", D: "All of the above" }, answer: "A" },
+            { id: 25, q: "Which of the following was a special purpose computer?", options: { A: "ABC", B: "ENIAC", C: "EDVAC", D: "All of the above" }, answer: "A" },
+            { id: 26, q: "What was the computer invented by Attanasoff and Clifford?", options: { A: "Mark I", B: "ABC", C: "Z3", D: "None of above" }, answer: "B" },
+            { id: 27, q: "Which of the following storage devices can store maximum amount of data?", options: { A: "Floppy Disk", B: "Hard Disk", C: "Compact Disk", D: "Magneto Optic Disk" }, answer: "B" },
+            { id: 28, q: "Which computer was considered the first electronic computer until 1973 when court invalidated the patent?", options: { A: "ENIAC", B: "MARK I", C: "Z3", D: "ABC" }, answer: "A" },
+            { id: 29, q: "A physical connection between the microprocessor memory and other parts of the microcomputer is known as", options: { A: "Path", B: "Address bus", C: "Route", D: "All of the above" }, answer: "B" },
+            { id: 30, q: "High density double sided floppy disks could store _________ of data", options: { A: "1.40 MB", B: "1.44 GB", C: "1.40 GB", D: "1.44 MB" }, answer: "D" },
+            { id: 31, q: "A high quality CAD system uses the following for printing drawing and graphs", options: { A: "Dot matrix printer", B: "Digital plotter", C: "Line printer", D: "All of the above" }, answer: "B" },
+            { id: 32, q: "Which of the following is not an input device?", options: { A: "OCR", B: "Optical scanners", C: "Voice recognition device", D: "COM (Computer Output to Microfilm)" }, answer: "D" },
+            { id: 33, q: "The accuracy of the floating-point numbers representable in two 16-bit words of a computer is approximately", options: { A: "16 digits", B: "6 digits", C: "9 digits", D: "All of above" }, answer: "B" },
+            { id: 34, q: "In most of the IBM PCs, the CPU, the device drivers, memory, expansion slots and active components are mounted on a single board. What is the name of the board?", options: { A: "Motherboard", B: "Daughterboard", C: "Breadboard", D: "Fatherboard" }, answer: "A" },
+            { id: 35, q: "In most IBM PCs, the CPU, the device drives, memory expansion slots and active components are mounted on a single board. What is the name of this board?", options: { A: "Motherboard", B: "Breadboard", C: "Daughter board", D: "Grandmother board" }, answer: "A" },
+            { id: 36, q: "Magnetic disks are the most popular medium for", options: { A: "Direct access", B: "Sequential access", C: "Both of above", D: "None of above" }, answer: "C" },
+            { id: 37, q: "A technique used by codes to convert an analog signal into a digital bit stream is known as", options: { A: "Pulse code modulation", B: "Pulse stretcher", C: "Query processing", D: "Queue management" }, answer: "A" },
+            { id: 38, q: "Regarding a VDU, Which statement is more correct?", options: { A: "It is an output device", B: "It is an input device", C: "It is a peripheral device", D: "It is hardware item" }, answer: "C" },
+            { id: 39, q: "A modern electronic computer is a machine that is meant for", options: { A: "Doing quick mathematical calculations", B: "Input, storage, manipulation and outputting of data", C: "Electronic data processing", D: "Performing repetitive tasks accurately" }, answer: "B" },
+            { id: 40, q: "When was vacuum tube invented?", options: { A: "1900", B: "1906", C: "1910", D: "1880" }, answer: "B" },
+            { id: 41, q: "Which of the following produces the best quality graphics reproduction?", options: { A: "Laser printer", B: "Ink jet printer", C: "Plotter", D: "Dot matrix printer" }, answer: "C" },
+            { id: 42, q: "Computers with 80286 microprocessor is", options: { A: "XT computer", B: "AT computers", C: "PS/2 computer", D: "None of above" }, answer: "B" },
+            { id: 43, q: "An application suitable for sequential processing is", options: { A: "Processing of grades", B: "Payroll processing", C: "Both a and b", D: "All of above" }, answer: "C" },
+            { id: 44, q: "Which of the following is not processing?", options: { A: "arranging", B: "manipulating", C: "calculating", D: "gathering" }, answer: "D" },
+            { id: 45, q: "The digital computer was developed primarily in", options: { A: "USSR", B: "Japan", C: "USA", D: "UK" }, answer: "C" },
+            { id: 46, q: "Software in computer", options: { A: "Enhances the capabilities of the hardware machine", B: "Increase the speed of central processing unit", C: "Both of above", D: "None of above" }, answer: "A" },
+            { id: 47, q: "Today's computer giant IBM was earlier known by different name which was changed in 1924. What was that name?", options: { A: "Tabulator Machine Co.", B: "Computing Tabulating Recording Co.", C: "The Tabulator Ltd.", D: "International Computer Ltd." }, answer: "B" },
+            { id: 48, q: "Before a disk drive can access any sector record, a computer program has to provide the record's disk address. What information does this address specify?", options: { A: "Track number", B: "Sector number", C: "Surface number", D: "All of above" }, answer: "D" },
+            { id: 49, q: "The arranging of data in a logical sequence is called", options: { A: "Sorting", B: "Classifying", C: "Reproducing", D: "Summarizing" }, answer: "A" },
+            { id: 50, q: "What is the responsibility of the logical unit in the CPU of a computer?", options: { A: "To produce result", B: "To compare numbers", C: "To control flow of information", D: "To do math's works" }, answer: "B" },
+            { id: 51, q: "Abacus was the first", options: { A: "electronic computer", B: "mechanical computer", C: "electronic calculator", D: "mechanical calculator" }, answer: "D" },
+            { id: 52, q: "If in a computer, 16 bits are used to specify address in a RAM, the number of addresses will be", options: { A: "216", B: "65,536", C: "64K", D: "Any of the above" }, answer: "B" },
+            { id: 53, q: "Instructions and memory address are represented by", options: { A: "Character code", B: "Binary codes", C: "Binary word", D: "Parity bit" }, answer: "B" },
+            { id: 54, q: "The terminal device that functions as a cash register, computer terminal, and OCR reader is the:", options: { A: "Data collection terminal", B: "OCR register terminal", C: "Video Display terminal", D: "POS terminal" }, answer: "D" },
+            { id: 55, q: "A set of flip flops integrated together is called", options: { A: "Counter", B: "Adder", C: "Register", D: "None of the above" }, answer: "C" },
+            { id: 56, q: "People often call ________ as the brain of computer system", options: { A: "Control Unit", B: "Arithmetic Logic Unit", C: "Central Processing Unit", D: "Storage Unit" }, answer: "C" },
+            { id: 57, q: "Which is used for manufacturing chips?", options: { A: "Bus", B: "Control unit", C: "Semiconductors", D: "A and b only" }, answer: "C" },
+            { id: 58, q: "The value of each bead in heaven of an abacus is", options: { A: "1", B: "3", C: "5", D: "7" }, answer: "C" },
+            { id: 59, q: "The first computer introduced in Nepal was", options: { A: "IBM 1400", B: "IBM 1401", C: "IBM 1402", D: "IBM 1403" }, answer: "B" },
+            { id: 60, q: "Mnemonic a memory trick is used in which of the following language?", options: { A: "Machine language", B: "Assembly language", C: "High level language", D: "None of above" }, answer: "B" },
+            { id: 61, q: "Instruction in computer languages consists of", options: { A: "OPCODE", B: "OPERAND", C: "Both of above", D: "None of above" }, answer: "C" },
+            { id: 62, q: "Which generation of computer is still under development", options: { A: "Fourth Generation", B: "Fifth Generation", C: "Sixth Generation", D: "Seventh Generation" }, answer: "B" },
+            { id: 63, q: "A register organized to allow to move left or right operations is called a", options: { A: "Counter", B: "Loader", C: "Adder", D: "Shift register" }, answer: "D" },
+            { id: 64, q: "Which was the most popular first generation computer?", options: { A: "IBM 1650", B: "IBM 360", C: "IBM 1130", D: "IBM 2700" }, answer: "A" },
+            { id: 65, q: "Which is considered a direct entry input device?", options: { A: "Optical scanner", B: "Mouse and digitizer", C: "Light pen", D: "All of the above" }, answer: "D" },
+            { id: 66, q: "A set of information that defines the status of resources allocated to a process is", options: { A: "Process control", B: "ALU", C: "Register Unit", D: "Process description" }, answer: "D" },
+            { id: 67, q: "Each set of Napier's bones consisted of _______ rods.", options: { A: "5", B: "9", C: "11", D: "13" }, answer: "C" },
+            { id: 68, q: "BCD is", options: { A: "Binary Coded Decimal", B: "Bit Coded Decimal", C: "Binary Coded Digit", D: "Bit Coded Digit" }, answer: "A" },
+            { id: 69, q: "When was the world's first laptop computer introduced in the market and by whom?", options: { A: "Hewlett-Packard, 1980", B: "Epson, 1981", C: "Laplink Traveling Software Inc, 1982", D: "Tandy Model-200, 1985" }, answer: "B" },
+            { id: 70, q: "From which generation operating systems were developed?", options: { A: "First", B: "Second", C: "Third", D: "Fourth" }, answer: "C" },
+            { id: 71, q: "The first firm to mass-market a microcomputer as a personal computer was", options: { A: "IBM", B: "Super UNIVAC", C: "Radio Shack", D: "Data General Corporation" }, answer: "C" },
+            { id: 72, q: "How many address lines are needed to address each machine location in a 2048 x 4 memory chip?", options: { A: "10", B: "11", C: "8", D: "12" }, answer: "B" },
+            { id: 73, q: "Properly arranged data is called", options: { A: "Field", B: "Words", C: "Information", D: "File" }, answer: "C" },
+            { id: 74, q: "A computer consists of", options: { A: "A central processing unit", B: "A memory", C: "Input and output unit", D: "All of the above" }, answer: "D" },
+            { id: 75, q: "Why are vacuum tubes also called valves?", options: { A: "Because they can amplify weak signals and make them strong", B: "Because they can stop or allow the flow of current", C: "Both of above", D: "None of above" }, answer: "B" },
+            { id: 76, q: "John Napier invented Logarithm in", options: { A: "1614", B: "1617", C: "1620", D: "None of above" }, answer: "A" },
+            { id: 77, q: "An integrated circuit is", options: { A: "A complicated circuit", B: "An integrating device", C: "Much costlier than a single transistor", D: "Fabricated on a tiny silicon chip" }, answer: "D" },
+            { id: 78, q: "What type of control pins are needed in a microprocessor to regulate traffic on the bus, in order to prevent two devices from trying to use it at the same time?", options: { A: "Bus control", B: "Interrupts", C: "Bus arbitration", D: "Status" }, answer: "C" },
+            { id: 79, q: "Where as a computer mouse moves over the table surface, the trackball is", options: { A: "Stationary", B: "Difficult to move", C: "Dragged", D: "Moved in small steps" }, answer: "A" },
+            { id: 80, q: "Which of the following is used as a primary storage device?", options: { A: "Magnetic drum", B: "Hard Disks", C: "Floppy", D: "All of above" }, answer: "A" },
+            { id: 81, q: "Multi user systems provided cost savings for small business because they use a single processing unit to link several", options: { A: "Personal computers", B: "Workstations", C: "Dumb terminals", D: "Mainframes" }, answer: "C" },
+            { id: 82, q: "What are the three decision making operations performed by the ALU of a computer?", options: { A: "Greater than", B: "Less than", C: "Equal to", D: "All of the above" }, answer: "D" },
+            { id: 83, q: "The word processing task associated with changing the appearance of a document is", options: { A: "Editing", B: "Writing", C: "Formatting", D: "All of above" }, answer: "C" },
+            { id: 84, q: "Nepal brought a computer for census of 2028 BS. This computer was of", options: { A: "first generation", B: "second generation", C: "third generation", D: "fourth generation" }, answer: "B" },
+            { id: 85, q: "Algorithm and Flow chart help us to", options: { A: "Know the memory capacity", B: "Identify the base of a number system", C: "Direct the output to a printer", D: "Specify the problem completely and clearly" }, answer: "D" },
+            { id: 86, q: "Which statement is valid about computer program?", options: { A: "It is understood by a computer", B: "It is understood by programmer", C: "It is understood by user", D: "Both a & b" }, answer: "D" },
+            { id: 87, q: "The difference between memory and storage is that memory is _____ and storage is _____", options: { A: "Temporary, permanent", B: "Permanent, temporary", C: "Slow, fast", D: "All of above" }, answer: "A" },
+            { id: 88, q: "When was Pascaline invented?", options: { A: "1617", B: "1620", C: "1642", D: "1837" }, answer: "C" },
+            { id: 89, q: "Which of the following statement is valid?", options: { A: "Lady Augusta is the first programmer", B: "Ada is the daughter of Lord Byron, a famous English poet", C: "ADA is a programming language developed by US Defense", D: "All of above" }, answer: "D" },
+            { id: 90, q: "A compiler is a translating program which", options: { A: "Translates instruction of a high level language into machine language", B: "Translates entire source program into machine language program", C: "It is not involved in program's execution", D: "All of above" }, answer: "D" },
+            { id: 91, q: "What is required when more than one person uses a central computer at the same time?", options: { A: "Light pen", B: "Mouse", C: "Digitizer", D: "Terminal" }, answer: "D" },
+            { id: 92, q: "Which of the following is the first computer to use Stored Program Concept?", options: { A: "UNIVAC", B: "ENIAC", C: "EDSAC", D: "None of above" }, answer: "C" },
+            { id: 93, q: "The term gigabyte refers to", options: { A: "1024 bytes", B: "1024 kilobytes", C: "1024 megabytes", D: "1024 gigabyte" }, answer: "C" },
+            { id: 94, q: "In which year was UK's premier computing event called 'The Which Computer?' started?", options: { A: "1980", B: "1985", C: "1986", D: "1987" }, answer: "A" },
+            { id: 95, q: "Once you load the suitable program and provide required data, computer does not need human intervention. This feature is known as", options: { A: "Accuracy", B: "Reliability", C: "Versatility", D: "Automatic" }, answer: "D" },
+            { id: 96, q: "What is a brand?", options: { A: "The name of companies that made computers", B: "The name of product a company gives to identify its product in market", C: "A name of class to indicate all similar products from different companies", D: "All of above" }, answer: "B" },
+            { id: 97, q: "Machine language is", options: { A: "Machine dependent", B: "Difficult to program", C: "Error prone", D: "All of above" }, answer: "D" },
+            { id: 98, q: "A byte consists of", options: { A: "One bit", B: "Four bits", C: "Eight bits", D: "Sixteen bits" }, answer: "C" },
+            { id: 99, q: "Modern Computers are very reliable but they are not", options: { A: "Fast", B: "Powerful", C: "Infallible", D: "Cheap" }, answer: "C" },
+            { id: 100, q: "What is the date when Babbage conceived Analytical engine?", options: { A: "1642", B: "1837", C: "1880", D: "1850" }, answer: "B" }
+        ];
+
+        // -------------------------------------------------------------
+        // Memory Boost Questions array (The 45 Questions Extracted)
+        // -------------------------------------------------------------
+        const memoryBoostQuestions = [
+            { id: "MB1", q: "The combination of computer technology and communication technology gave birth to", options: { A: "Informal communication", B: "Post-Formal technology", C: "High-Tech analysis", D: "Information and Communication Technologies" }, answer: "D" },
+            { id: "MB2", q: "Which of the following is not a major feature of data processing when using the computer method", options: { A: "Data can be steadily and continuously processed", B: "The operations are practically noisy", C: "There is a store where data is permanently saved", D: "Errors can be easily and neatly corrected" }, answer: "B" },
+            { id: "MB3", q: "Which of the statements below is not true about the accuracy of a computer?", options: { A: "Its accuracy is very high and its consistency can be relied upon.", B: "Errors committed are mostly due to human actions rather than technological weakness.", C: "There are in-built errors detecting schemes.", D: "They can read your mind when typing" }, answer: "D" },
+            { id: "MB4", q: "The hardware components of a computer are said to be", options: { A: "Intangible", B: "Tangible", C: "Non-Explicit", D: "Software" }, answer: "B" },
+            { id: "MB5", q: "The parts of a computer system that is connected to the System Unit are called", options: { A: "Connector Devices", B: "Peripheral Devices", C: "Auxiliary Devices", D: "Mouse" }, answer: "B" },
+            { id: "MB6", q: "Which of the following statements is true?", options: { A: "The Computer System is inside the Computing system", B: "The Computing System is inside the Computer System", C: "The Computer System is not tangible", D: "None of the above." }, answer: "A" },
+            { id: "MB7", q: "Which of the statements below is true?", options: { A: "The System Unit includes the monitor", B: "The Central Processing Unit is inside the monitor", C: "The System Unit houses the Central Processing unit", D: "The central processing unit houses the system unit" }, answer: "C" },
+            { id: "MB8", q: "The Arithmetic and Logic Unit is found in the", options: { A: "Computer Monitor", B: "Operating System", C: "Everywhere", D: "Computer Processor" }, answer: "D" },
+            { id: "MB9", q: "The ________ is said to be volatile", options: { A: "Read Only Memory", B: "Random Saving Memory", C: "Random Access Memory", D: "Hard Disk Drive" }, answer: "C" },
+            { id: "MB10", q: "The technology associated to the first generations of computers is", options: { A: "Transistors", B: "Vacuum Tubes", C: "Integrated Circuit", D: "Very Large Scale Integrated Circuit" }, answer: "B" },
+            { id: "MB11", q: "The technology associated to the third generations of computers is", options: { A: "Transistors", B: "Vacuum Tubes", C: "Integrated Circuit", D: "Very Large Scale Integrated Circuit" }, answer: "C" },
+            { id: "MB12", q: "Electronic computers can be classified into", options: { A: "Digital, Computer and Manual", B: "Digital, Analog and Computerized", C: "Mechanical, Digital and Hybrid", D: "Digital, Analog and Hybrid" }, answer: "D" },
+            { id: "MB13", q: "Computers specially designed for airplanes and missiles are", options: { A: "Automatic Computers", B: "Flying Computers", C: "Android Computers", D: "Special Purpose Computers" }, answer: "D" },
+            { id: "MB14", q: "Our mobile phones are under what classification of computers based on purpose?", options: { A: "Special Purpose", B: "Calling Purpose", C: "General Purpose", D: "None of the above" }, answer: "C" },
+            { id: "MB15", q: "Which of the followings is a major division of an intelligent computer keyboard?", options: { A: "Function keys", B: "Alphanumeric Keys", C: "Numeric Keys", D: "All of the above" }, answer: "D" },
+            { id: "MB16", q: "A combination of the CONTROL key and Y performs ________ operation", options: { A: "Copy", B: "Yield", C: "Redo", D: "Undo" }, answer: "C" },
+            { id: "MB17", q: "A combination of the CONTROL key and Z performs ________ operation", options: { A: "Copy", B: "Yield", C: "Redo", D: "Undo" }, answer: "D" },
+            { id: "MB18", q: "The RECTANGULAR shape in a flow chart represents", options: { A: "Terminator", B: "Process", C: "Data Input and Output", D: "Flow line" }, answer: "B" },
+            { id: "MB19", q: "The PARALLELOGRAM shape in a flow chart represents", options: { A: "Terminator", B: "Process", C: "Data Input and Output", D: "Flow line" }, answer: "C" },
+            { id: "MB20", q: "The DIAMOND, KITE or RHOMBUS shape in a flow chart represents", options: { A: "Terminator", B: "Decision", C: "Data Input and Output", D: "Flow line" }, answer: "B" },
+            { id: "MB21", q: "A ________ is a graphical representation of the major steps of work process", options: { A: "Diagram", B: "Flowchart", C: "Pseudocodes", D: "Graph" }, answer: "B" },
+            { id: "MB22", q: "________ is named after the scholar Abu Jafar Muhammad Ibn Musa Al-khowarizmi", options: { A: "Flow chart", B: "Pseudocodes", C: "Algorithm", D: "Programming" }, answer: "C" },
+            { id: "MB23", q: "Which of the followings is not an effect of computer virus on Hard Disk Drive?", options: { A: "Increase file size", B: "Overloads the processor", C: "Create bad sector", D: "Increase or decrease memory size" }, answer: "D" },
+            { id: "MB24", q: "Which of the followings is not found in front of the System unit?", options: { A: "Lights", B: "Key Lock", C: "Power On", D: "Monitor Port" }, answer: "D" },
+            { id: "MB25", q: "Which of the following statements is true?", options: { A: "The RAM is a non-volatile memory.", B: "The RAM loses its data when PC power is switched off", C: "The RAM is a secondary memory", D: "None of the above" }, answer: "B" },
+            { id: "MB26", q: "What does the acronym PC stands for?", options: { A: "People's Computer", B: "People's Congress", C: "Personal Communication", D: "Personal Computer" }, answer: "D" },
+            { id: "MB27", q: "What does the acronym ALU stands for?", options: { A: "Assignment Logical Unit", B: "Arithmetic Logistics Unit", C: "Arithmetic and Logic Unit", D: "None of the above" }, answer: "C" },
+            { id: "MB28", q: "The followings are some of the basic types of computer instructions except", options: { A: "Input-output Instructions", B: "Branching Instructions", C: "Logic Instructions", D: "Process Instructions" }, answer: "D" },
+            { id: "MB29", q: "Machine, Assembly, High level and Very high level are categories of", options: { A: "Levels", B: "Programming Languages", C: "English Language", D: "Mumuye Language" }, answer: "B" },
+            { id: "MB30", q: "Which of the following statements is not true about computer viruses?", options: { A: "Majority of viruses are transmitted through floppies", B: "These viruses are software", C: "They are hardware", D: "They can create more than one partition on a disk drive" }, answer: "C" },
+            { id: "MB31", q: "Word 'RAM' stands for", options: { A: "random access memory", B: "read access memory", C: "read arithmetic memory", D: "random arithmetic memory" }, answer: "A" },
+            { id: "MB32", q: "When you are working on an unsaved document on a PC, where is the document temporarily stored?", options: { A: "RAM", B: "ROM", C: "The CPU", D: "The CD-ROM" }, answer: "A" },
+            { id: "MB33", q: "Parts of a computer that allow the user to see or hear information that comes out from the computer", options: { A: "Software", B: "Input Device", C: "Output Device", D: "Operating System" }, answer: "C" },
+            { id: "MB34", q: "Transformation of input into output is performed by", options: { A: "Peripherals", B: "Memory", C: "The CPU", D: "The ALU" }, answer: "C" },
+            { id: "MB35", q: "External drives are typically connected to the computer by", options: { A: "USB", B: "FireWire", C: "VGA", D: "both A and B" }, answer: "D" },
+            { id: "MB36", q: "Device driver is:", options: { A: "The person who delivers hardware devices to a computer store", B: "The connector that allows you to attach the device to a computer", C: "A computer program that allows the operating system to communicate with the device", D: "The power supply for the device" }, answer: "C" },
+            { id: "MB37", q: "A program that controls a computer's basic functions", options: { A: "Hard Drive", B: "Motherboard", C: "Operating System", D: "CPU" }, answer: "C" },
+            { id: "MB38", q: "What is a NIC?", options: { A: "Network Interface Card", B: "Network Interference Control", C: "No Internet Connection", D: "New Infrared Controller" }, answer: "A" },
+            { id: "MB39", q: "Which of the following is not a class based on size?", options: { A: "Mainframe Computer", B: "Micro Computer", C: "Mini Computer", D: "Digital Computer" }, answer: "D" },
+            { id: "MB40", q: "Which of the following professions has not been affected by personal computers?", options: { A: "Medical", B: "Clerical and law", C: "Accounting", D: "None of the above" }, answer: "D" },
+            { id: "MB41", q: "In a computer system, what is a CMOS?", options: { A: "A battery", B: "A chip", C: "An input device", D: "None of the above" }, answer: "B" },
+            { id: "MB42", q: "Which of the following is correct acronym of VGA?", options: { A: "Video Graphics Array", B: "Visual Graphics Array", C: "Volatile Graphics Array", D: "Video Graphics Adapter" }, answer: "A" },
+            { id: "MB43", q: "Which of the following is a CPU brand name?", options: { A: "IBM", B: "Texas", C: "AMD", D: "All of the above" }, answer: "C" },
+            { id: "MB44", q: "Pressing one of the keys below on the keyboard of a Windows computer enables you to take a screenshot of the current page. Which key is it?", options: { A: "ALT", B: "PrtSc", C: "Tab key", D: "Ins" }, answer: "B" },
+            { id: "MB45", q: "Which of the following is not a classification of computer programming languages", options: { A: "Machine language", B: "Assembly language", C: "Very high level systemic language", D: "High level symbolic language" }, answer: "C" }
         ];
 
         // Mock historical data on start
         let testSubmissions = [
             { id: "S-1042", user: "Alexander Smith", type: "Exam", score: 172, percentage: 86, grade: "Excellent", timerLeft: "12:15" },
-            { id: "S-1043", user: "Chioma Nduka", type: "Exam", score: 154, percentage: 77, grade: "Very Good", timerLeft: "08:44" },
+            { id: "S-1043", user: "Chioma Nduka", type: "Practice", score: 154, percentage: 77, grade: "Very Good", timerLeft: "Self-Paced" },
             { id: "S-1044", user: "Liam Sterling", type: "Exam", score: 98, percentage: 49, grade: "Fail", timerLeft: "00:00" },
-            { id: "S-1045", user: "Fatima Yusuf", type: "Exam", score: 194, percentage: 97, grade: "Outstanding", timerLeft: "15:02" }
+            { id: "S-1045", user: "Fatima Yusuf", type: "Memory Boost", score: 86, percentage: 95, grade: "Outstanding", timerLeft: "Self-Paced" }
         ];
 
         // System Initialization
@@ -1750,8 +821,10 @@
             });
 
             // Home Controls
-            document.getElementById('start-exam-btn').addEventListener('click', () => startQuiz(true));
-            document.getElementById('start-practice-btn').addEventListener('click', () => startQuiz(false));
+            document.getElementById('start-exam-btn').addEventListener('click', () => startQuiz('exam'));
+            document.getElementById('start-practice-btn').addEventListener('click', () => startQuiz('practice'));
+            document.getElementById('start-memory-btn').addEventListener('click', () => startQuiz('memory'));
+            
             document.getElementById('logout-btn').addEventListener('click', logout);
             document.getElementById('show-history-btn').addEventListener('click', () => showHistoryScreen());
             document.getElementById('back-from-history-btn').addEventListener('click', () => showScreen('screen-home'));
@@ -1921,17 +994,26 @@
             updateNavigationGrid();
         }
 
-        // Start Exam Simulator session
-        function startQuiz(modeExam) {
+        // Start Quiz Session
+        function startQuiz(modeStr) {
             showLoader("Setting up Simulator", "Configuring question engines and data structures.");
-            isExamMode = modeExam;
+            
+            currentMode = modeStr;
+            isExamMode = (modeStr === 'exam'); // Exam mode uses strict rules, practice & memory are self-paced
 
             currentQuizIndex = 0;
             userSelectedAnswers = {};
             flaggedQuestions = {};
 
-            let pool = JSON.parse(JSON.stringify(masterQuestions));
+            // Determine which pool to use
+            let pool = [];
+            if (modeStr === 'memory') {
+                pool = JSON.parse(JSON.stringify(memoryBoostQuestions)); // 45 questions
+            } else {
+                pool = JSON.parse(JSON.stringify(masterQuestions)); // 100 questions
+            }
 
+            // Shuffle if enabled
             if (shuffleEnabled) {
                 for (let i = pool.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -1941,16 +1023,25 @@
 
             quizPool = pool;
 
+            const badgeMode = document.getElementById('badge-mode');
+            const timerWrapper = document.getElementById('exam-timer-wrapper');
+
+            // Setup UI dynamically based on mode
             if (isExamMode) {
-                document.getElementById('badge-mode').className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
-                document.getElementById('badge-mode').textContent = "Exam Mode";
-                document.getElementById('exam-timer-wrapper').classList.remove('hidden');
+                badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
+                badgeMode.textContent = "Exam Mode";
+                timerWrapper.classList.remove('hidden');
                 examTimeRemaining = timerConfig * 60;
                 startTimerLoop();
-            } else {
-                document.getElementById('badge-mode').className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
-                document.getElementById('badge-mode').textContent = "Practice Mode";
-                document.getElementById('exam-timer-wrapper').classList.add('hidden');
+            } else if (modeStr === 'practice') {
+                badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
+                badgeMode.textContent = "Practice Mode";
+                timerWrapper.classList.add('hidden');
+                if (examTimerInterval) clearInterval(examTimerInterval);
+            } else if (modeStr === 'memory') {
+                badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-cyan-50 text-cyan-600 dark:bg-cyan-950/40 dark:text-cyan-400";
+                badgeMode.textContent = "Memory Boost";
+                timerWrapper.classList.add('hidden');
                 if (examTimerInterval) clearInterval(examTimerInterval);
             }
 
@@ -2028,6 +1119,7 @@
                         optStyle += "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300";
                     }
                 } else {
+                    // Practice / Memory Boost logic: Show correct/incorrect immediately
                     const alreadyAnswered = selectedAnswer !== undefined;
                     
                     if (alreadyAnswered) {
@@ -2064,7 +1156,7 @@
                 expPanel.classList.remove('hidden');
                 document.getElementById('explanation-text').innerHTML = `
                     <strong>Correct Answer Option ${q.answer}</strong>. 
-                    This item validates your knowledge of computer fundamentals, generations, and processing mechanisms. Option ${q.answer} matches the official answers key catalog.
+                    This item validates your knowledge of computer fundamentals, generation specs, and processing mechanisms. Option ${q.answer} matches the official answers key catalog.
                 `;
             } else {
                 expPanel.classList.add('hidden');
@@ -2076,6 +1168,7 @@
         function handleOptionSelection(optionKey) {
             const q = quizPool[currentQuizIndex];
             
+            // In practice/memory modes, don't allow changing answer once selected
             if (!isExamMode && userSelectedAnswers[q.id] !== undefined) {
                 return; 
             }
@@ -2167,11 +1260,16 @@
             const minLeft = Math.floor(examTimeRemaining / 60);
             const secLeft = examTimeRemaining % 60;
             const timerUsed = isExamMode ? `${minLeft}:${secLeft.toString().padStart(2, '0')}` : "Self-Paced";
+            
+            // Format mode title for logs
+            let logTypeTitle = "Exam";
+            if (currentMode === 'practice') logTypeTitle = "Practice";
+            if (currentMode === 'memory') logTypeTitle = "Memory Boost";
 
             const submissionRecord = {
                 id: `S-${Math.floor(1000 + Math.random() * 9000)}`,
                 user: currentUser ? currentUser.username : "Anonymous Candidate",
-                type: isExamMode ? "Exam" : "Practice",
+                type: logTypeTitle,
                 score: score,
                 percentage: percentage,
                 grade: grade,
@@ -2328,17 +1426,23 @@
                 card.className = "bg-white dark:bg-slate-950 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-between gap-4 text-xs shadow-sm";
 
                 const isPassing = record.percentage >= passingThreshold;
+                
+                // Color Code for Badges
+                let typeBadgeClasses = "bg-slate-100 text-slate-400 dark:bg-slate-800";
+                if (record.type === 'Exam') typeBadgeClasses = "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
+                else if (record.type === 'Practice') typeBadgeClasses = "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
+                else if (record.type === 'Memory Boost') typeBadgeClasses = "bg-cyan-50 text-cyan-600 dark:bg-cyan-950/40 dark:text-cyan-400";
 
                 card.innerHTML = `
                     <div class="space-y-1">
                         <div class="flex items-center gap-2">
                             <span class="font-extrabold text-slate-900 dark:text-white">Session ID: ${record.id}</span>
-                            <span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded text-[10px] uppercase font-bold">${record.type}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold ${typeBadgeClasses}">${record.type}</span>
                         </div>
                         <span class="text-slate-400 block font-medium">Remaining: ${record.timerLeft}</span>
                     </div>
                     <div class="text-right space-y-1">
-                        <strong class="text-sm font-extrabold ${isPassing ? 'text-emerald-500' : 'text-rose-500'}">${record.score} / 200 (${record.percentage}%)</strong>
+                        <strong class="text-sm font-extrabold ${isPassing ? 'text-emerald-500' : 'text-rose-500'}">${record.score} (${record.percentage}%)</strong>
                         <span class="block font-semibold uppercase tracking-wider text-[10px] text-slate-400">${record.grade}</span>
                     </div>
                 `;
@@ -2433,17 +1537,17 @@
             document.getElementById('admin-total-subs').textContent = total;
 
             if (total > 0) {
-                const avg = Math.round(testSubmissions.reduce((acc, curr) => acc + curr.score, 0) / total);
+                const avg = Math.round(testSubmissions.reduce((acc, curr) => acc + curr.percentage, 0) / total);
                 const passCount = testSubmissions.filter(item => item.percentage >= passingThreshold).length;
-                const max = Math.max(...testSubmissions.map(item => item.score));
+                const max = Math.max(...testSubmissions.map(item => item.percentage));
 
-                document.getElementById('admin-avg-score').textContent = `${avg} / 200`;
+                document.getElementById('admin-avg-score').textContent = `${avg}%`;
                 document.getElementById('admin-pass-rate').textContent = `${Math.round((passCount / total) * 100)}%`;
-                document.getElementById('admin-max-score').textContent = `${max} / 200`;
+                document.getElementById('admin-max-score').textContent = `${max}%`;
             } else {
-                document.getElementById('admin-avg-score').textContent = "0 / 200";
+                document.getElementById('admin-avg-score').textContent = "0%";
                 document.getElementById('admin-pass-rate').textContent = "0%";
-                document.getElementById('admin-max-score').textContent = "0 / 200";
+                document.getElementById('admin-max-score').textContent = "0%";
             }
 
             document.getElementById('admin-timer-input').value = timerConfig;
@@ -2466,7 +1570,7 @@
                     row.innerHTML = `
                         <td class="py-3 px-2 font-semibold text-slate-900 dark:text-white">${record.user}</td>
                         <td class="py-3 px-2 text-slate-400">${record.type}</td>
-                        <td class="py-3 px-2 font-extrabold ${gradeColor}">${record.score} / 200</td>
+                        <td class="py-3 px-2 font-extrabold ${gradeColor}">${record.score} (${record.percentage}%)</td>
                         <td class="py-3 px-2 font-bold ${gradeColor}">${record.grade}</td>
                         <td class="py-3 px-2 text-slate-400 font-mono">${record.timerLeft}</td>
                     `;
