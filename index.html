@@ -139,9 +139,9 @@
                     <i data-lucide="cpu" class="w-96 h-96"></i>
                 </div>
                 <div class="relative z-10 space-y-3 max-w-2xl">
-                    <span class="px-3 py-1 bg-white/20 text-xs font-bold uppercase tracking-wider rounded-full">Fundamentals of Computer MCQ</span>
-                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to boost your computer knowledge, <span id="welcome-name">Student</span>?</h1>
-                    <p class="text-brand-100 text-sm sm:text-base leading-relaxed">Prepare yourself with 100 high-yield questions on CPU architecture, computer history, generations of memory chips, and processing methodologies.</p>
+                    <span class="px-3 py-1 bg-white/20 text-xs font-bold uppercase tracking-wider rounded-full">Academic Core CBT Suite</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Ready to boost your academic knowledge, <span id="welcome-name">Student</span>?</h1>
+                    <p class="text-brand-100 text-sm sm:text-base leading-relaxed">Prepare yourself with targeted high-yield past questions specifically crafted for your TSU 101-level courses.</p>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-xl"><i data-lucide="award" class="w-6 h-6"></i></div>
-                    <div><span class="text-xs text-slate-400 block font-semibold">Total Questions</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">100 / 45 MCQs</span></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Total Questions</span><span id="dash-total-qs" class="text-lg font-extrabold text-slate-900 dark:text-white">100 MCQs</span></div>
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-xl"><i data-lucide="clock" class="w-6 h-6"></i></div>
@@ -161,61 +161,73 @@
                 </div>
                 <div class="bg-white dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
                     <div class="p-3 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 rounded-xl"><i data-lucide="percent" class="w-6 h-6"></i></div>
-                    <div><span class="text-xs text-slate-400 block font-semibold">Max Score</span><span class="text-lg font-extrabold text-slate-900 dark:text-white">Up to 200</span></div>
+                    <div><span class="text-xs text-slate-400 block font-semibold">Max Score</span><span id="dash-max-score" class="text-lg font-extrabold text-slate-900 dark:text-white">Up to 200</span></div>
                 </div>
             </div>
 
-            <!-- Mode Chooser (Now updated to 3 Cards) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Mode 1: Exam -->
-                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-brand-500 hover:shadow-lg transition-all group">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <div class="p-4 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-2xl group-hover:scale-110 transition-transform">
-                                <i data-lucide="file-text" class="w-8 h-8"></i>
-                            </div>
-                            <span class="px-3 py-1 bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 text-xs font-bold rounded-full">Strict Rules</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Exam Simulator</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Run a strict exam environment. Shuffle all 100 questions, lock a 45-minute countdown, navigate back and forth, bookmark issues for review, and submit for automatic instant evaluation.</p>
-                    </div>
-                    <button id="start-exam-btn" class="mt-6 w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                        Launch Exam <i data-lucide="play-circle" class="w-4 h-4"></i>
+            <!-- Course Selection -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+                    <i data-lucide="book-open" class="w-6 h-6 text-brand-500"></i> Select Course Module
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="selectCourse('COS101')" id="btn-course-COS101" class="text-left p-4 rounded-2xl border-2 border-brand-500 bg-brand-50 dark:bg-brand-900/20 transition-all">
+                        <span class="block font-bold text-lg text-brand-700 dark:text-brand-300">COS101</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400">Intro to Computer Science</span>
+                        <span class="block text-xs font-semibold mt-2 text-brand-600 dark:text-brand-400">100 Questions</span>
+                    </button>
+                    <button onclick="selectCourse('CMP101')" id="btn-course-CMP101" class="text-left p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-brand-300 transition-all bg-white dark:bg-slate-950">
+                        <span class="block font-bold text-lg text-slate-900 dark:text-white">CMP101</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400">Intro to Computer Science</span>
+                        <span class="block text-xs font-semibold mt-2 text-slate-500 dark:text-slate-400">45 Questions</span>
+                    </button>
+                    <button onclick="selectCourse('BIO101')" id="btn-course-BIO101" class="text-left p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-brand-300 transition-all bg-white dark:bg-slate-950">
+                        <span class="block font-bold text-lg text-slate-900 dark:text-white">TSU BIO101</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400">General Biology</span>
+                        <span class="block text-xs font-semibold mt-2 text-slate-500 dark:text-slate-400">80 Questions</span>
                     </button>
                 </div>
+            </div>
 
-                <!-- Mode 2: Practice -->
-                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all group">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <div class="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform">
-                                <i data-lucide="sparkles" class="w-8 h-8"></i>
+            <!-- Mode Chooser -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+                    <i data-lucide="settings-2" class="w-6 h-6 text-brand-500"></i> Select Execution Mode
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Mode 1: Exam -->
+                    <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-brand-500 hover:shadow-lg transition-all group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="p-4 bg-brand-50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 rounded-2xl group-hover:scale-110 transition-transform">
+                                    <i data-lucide="file-text" class="w-8 h-8"></i>
+                                </div>
+                                <span class="px-3 py-1 bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300 text-xs font-bold rounded-full">Strict Rules</span>
                             </div>
-                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 text-xs font-bold rounded-full">Self-Paced</span>
+                            <h3 class="text-xl font-bold">Exam Simulator</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Run a strict exam environment. Shuffle the questions array, lock a countdown timer, navigate back and forth, bookmark issues for review, and submit for automatic instant evaluation.</p>
                         </div>
-                        <h3 class="text-xl font-bold">Practice Mode</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice at your own speed with the 100 master questions. No ticking clocks. Receive instant visual correction, explanations, and track your progress interactively.</p>
+                        <button onclick="startQuiz('exam')" class="mt-6 w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                            Launch Exam <i data-lucide="play-circle" class="w-4 h-4"></i>
+                        </button>
                     </div>
-                    <button id="start-practice-btn" class="mt-6 w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                        Launch Practice <i data-lucide="book-open" class="w-4 h-4"></i>
-                    </button>
-                </div>
 
-                <!-- Mode 3: Memory Boost (NEW) -->
-                <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-cyan-500 hover:shadow-lg transition-all group">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <div class="p-4 bg-cyan-50 dark:bg-cyan-950/40 text-cyan-600 dark:text-cyan-400 rounded-2xl group-hover:scale-110 transition-transform">
-                                <i data-lucide="zap" class="w-8 h-8"></i>
+                    <!-- Mode 2: Practice -->
+                    <div class="bg-white dark:bg-slate-950 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="p-4 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-2xl group-hover:scale-110 transition-transform">
+                                    <i data-lucide="sparkles" class="w-8 h-8"></i>
+                                </div>
+                                <span class="px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 text-xs font-bold rounded-full">Self-Paced</span>
                             </div>
-                            <span class="px-3 py-1 bg-cyan-100 text-cyan-700 dark:bg-cyan-900/50 dark:text-cyan-300 text-xs font-bold rounded-full">Active Recall</span>
+                            <h3 class="text-xl font-bold">Practice Mode</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Practice at your own speed with the targeted module. No ticking clocks. Receive instant visual correction and explanations, and track your progress interactively.</p>
                         </div>
-                        <h3 class="text-xl font-bold">Memory Boost</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Master the material using a specialized subset of 45 past questions. Run a self-paced mock exam to lock in your knowledge before taking the real exam simulator.</p>
+                        <button onclick="startQuiz('practice')" class="mt-6 w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                            Launch Practice <i data-lucide="book-open" class="w-4 h-4"></i>
+                        </button>
                     </div>
-                    <button id="start-memory-btn" class="mt-6 w-full py-3.5 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform">
-                        Launch Memory Boost <i data-lucide="zap" class="w-4 h-4"></i>
-                    </button>
                 </div>
             </div>
 
@@ -379,7 +391,7 @@
                         <i data-lucide="eye" class="w-4 h-4"></i> Review Questions & Answers
                     </button>
                     <button id="restart-home-btn" class="w-full sm:flex-1 py-3.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95">
-                        <i data-lucide="home" class="w-4 h-4"></i> Back to Home Lobby
+                        <i data-lucide="home" class="w-4 h-4"></i> Back to Dashboard
                     </button>
                 </div>
             </div>
@@ -550,7 +562,8 @@
         let shuffleEnabled = true;
 
         let currentUser = null;
-        let currentMode = 'exam'; // 'exam', 'practice', or 'memory'
+        let activeCourse = 'COS101'; // Default starting active course block
+        let currentMode = 'exam';
         let isExamMode = false;
         let examTimeRemaining = timerConfig * 60; // in seconds
         let examTimerInterval = null;
@@ -562,7 +575,7 @@
         let flaggedQuestions = {}; 
 
         // -------------------------------------------------------------
-        // Master Questions array (All 100 MCQs from PDF)
+        // COURSE 1: COS101 (100 Questions Data Bank)
         // -------------------------------------------------------------
         const masterQuestions = [
             { id: 1, q: "UNIVAC is", options: { A: "Universal Automatic Computer", B: "Universal Array Computer", C: "Unique Automatic Computer", D: "Unvalued Automatic Computer" }, answer: "A" },
@@ -668,7 +681,7 @@
         ];
 
         // -------------------------------------------------------------
-        // Memory Boost Questions array (The 45 Questions Extracted)
+        // COURSE 2: CMP101 (45 Questions Memory Boost Data Bank)
         // -------------------------------------------------------------
         const memoryBoostQuestions = [
             { id: "MB1", q: "The combination of computer technology and communication technology gave birth to", options: { A: "Informal communication", B: "Post-Formal technology", C: "High-Tech analysis", D: "Information and Communication Technologies" }, answer: "D" },
@@ -718,12 +731,98 @@
             { id: "MB45", q: "Which of the following is not a classification of computer programming languages", options: { A: "Machine language", B: "Assembly language", C: "Very high level systemic language", D: "High level symbolic language" }, answer: "C" }
         ];
 
+        // -------------------------------------------------------------
+        // COURSE 3: TSU BIO101 (80 Questions Parsed Data Bank)
+        // -------------------------------------------------------------
+        const bio101Questions = [
+            { id: "BIO1", q: "The study of inter-relationship between species of an organism is known as", options: { A: "Ecology", B: "Synecology", C: "Autecology", D: "None of the Above" }, answer: "B" },
+            { id: "BIO2", q: "The hadal zone in marine habitat receives sunlight more than the abyssal zone.", options: { A: "True", B: "False" }, answer: "B" },
+            { id: "BIO3", q: "The ratio of live births in an area to it population is", options: { A: "Natality", B: "Birth rate", C: "Death rate", D: "Mortality rate" }, answer: "B" },
+            { id: "BIO4", q: "....is any permanent alteration in an organism's DNA", options: { A: "Gene aberration", B: "Gene Mutation", C: "Gene flow", D: "DNA aberration" }, answer: "B" },
+            { id: "BIO5", q: "Which of the following is not an agent of microevolution?", options: { A: "Genetic drift", B: "Genetic shift", C: "Gene flow", D: "Natural selection" }, answer: "B" },
+            { id: "BIO6", q: "....is more likely to occur when a species comes to a new environment or a new environment comes to a species", options: { A: "Mutation", B: "Selection", C: "Speciation", D: "Change" }, answer: "B" },
+            { id: "BIO7", q: "The rapid emergence of many species from a single species that has been introduced to anew environment is", options: { A: "adaptive radiation", B: "speciation", C: "colonization", D: "macroevolution" }, answer: "A" },
+            { id: "BIO8", q: "The movement of gene from one population to another, takes places through", options: { A: "transfer", B: "mating", C: "migration", D: "gene flow" }, answer: "D" },
+            { id: "BIO9", q: "Which is not the cause of food shortage in a population", options: { A: "preying on each other", B: "over-population", C: "pest", D: "bush burning" }, answer: "A" },
+            { id: "BIO10", q: "A vegetation having mainly trees is known as", options: { A: "savannah forest", B: "mangrove forest", C: "tropical rainforest", D: "swamp forest" }, answer: "C" },
+            { id: "BIO11", q: "A cross between gametes (BB x DD) for the traits black (BB) and white (DD) shows", options: { A: "B is dominant over D", B: "D is dominant over B", C: "incompatible traits", D: "incomplete dominance" }, answer: "D" },
+            { id: "BIO12", q: "The crossing of plants with contrasting characters is", options: { A: "cross- breeding", B: "hybridization", C: "heterozygote crossing", D: "None of the Above" }, answer: "B" },
+            { id: "BIO13", q: "What is the genotypic ratio of Tall/Red plants?", options: { A: "4:3:2:1", B: "1:3:2:4", C: "1:2:2:4", D: "3:2:2:1" }, answer: "C" },
+            { id: "BIO14", q: "What is phenotype of Tall/Red plant", options: { A: "9", B: "3", C: "1", D: "4" }, answer: "A" },
+            { id: "BIO15", q: "What is the genotypic ratio of Tall/White?", options: { A: "1:2", B: "3:1", C: "2:2", D: "4:1" }, answer: "A" },
+            { id: "BIO16", q: "What is the phenotype of Short/White?", options: { A: "4", B: "3", C: "1", D: "2" }, answer: "C" },
+            { id: "BIO17", q: "What will be the F1 phenotype of a marriage between a female (XX) and a male (XY) having a sterile maleness chromosome?", options: { A: "3 Female: 1 Male", B: "2 Female: 2 Male", C: "1 Female: 3 Male", D: "All Female" }, answer: "D" },
+            { id: "BIO18", q: "A normal male (AA) and sickle cell anemia carrier female (AS) had children. What will be the phenotype of their F1 generation?", options: { A: "3 normal: 1 sickle", B: "2 normal: 2 sickle", C: "1 normal : 3 sickle", D: "2 normal: 2 carriers" }, answer: "D" },
+            { id: "BIO19", q: "Which is not an application of heredity principle?", options: { A: "Breeding of-annual crops", B: "Breeding of high yielding varieties", C: "Breeding disease resistant", D: "Breeding of new varieties" }, answer: "A" },
+            { id: "BIO20", q: "The undeserved rhesus factor in human couple is", options: { A: "couple being rhesus +v", B: "couple being rhesus -b", C: "Male -v and Female +v", D: "Female -v and Male +v" }, answer: "D" },
+            { id: "BIO21", q: "What is the term used for zygote with a pair of homologous chromosomes both with a recessive characteristics", options: { A: "phenotype", B: "genotype", C: "homozygote", D: "allele" }, answer: "C" },
+            { id: "BIO22", q: "If a dark skin woman (Bb) marries an albino man (bb) and they have four children, how many of the children will be dark skinned?", options: { A: "3", B: "2", C: "1", D: "4" }, answer: "B" },
+            { id: "BIO23", q: "Which of the following organelles is found in the prokaryotic cell?", options: { A: "Endoplasmic reticulum", B: "Lysosome", C: "Ribosome", D: "Mitochondria" }, answer: "C" },
+            { id: "BIO24", q: "One of the functions of the plant cell wall is", options: { A: "selective absorption of materials", B: "biochemical reactions in the cell takes place there", C: "absorption of water only", D: "to give the cell its shape" }, answer: "D" },
+            { id: "BIO25", q: "The place of an organism in relation to other organisms in the same habitant is called?", options: { A: "ecosystem", B: "ecology", C: "ecological niche", D: "habitat" }, answer: "C" },
+            { id: "BIO26", q: "Diffusion play the following rule in lower organisms", options: { A: "transport of food", B: "absorption of food", C: "excretion", D: "catabolism" }, answer: "C" },
+            { id: "BIO27", q: "Cyclosis is the", options: { A: "circular movement in Euglena", B: "circular movements in cycloids", C: "type of movement in WBC", D: "type of movement in hydrilla" }, answer: "D" },
+            { id: "BIO28", q: "The simplest form of reproduction is by", options: { A: "Binary fission", B: "vegetative propagation", C: "conjugation", D: "fertilization" }, answer: "A" },
+            { id: "BIO29", q: "In plants, breeding true is by", options: { A: "self- pollination", B: "text cross", C: "cross pollination", D: "successful carrying out breeding" }, answer: "A" },
+            { id: "BIO30", q: "Which is not a classical mendelian-traits", options: { A: "Root size", B: "flowers", C: "pods", D: "seed surface" }, answer: "A" },
+            { id: "BIO31", q: "What is that evolves?", options: { A: "individual organism", B: "individual specie", C: "community", D: "population" }, answer: "D" },
+            { id: "BIO32", q: "A population is likely to possess many different alleles for a given", options: { A: "character", B: "traits", C: "gene", D: "characteristics" }, answer: "C" },
+            { id: "BIO33", q: "The total of alleles in a population is that populations'", options: { A: "gene bank", B: "gene collections", C: "gene pool", D: "gene data bank" }, answer: "C" },
+            { id: "BIO34", q: "A change of allele frequencies within a population over a relatively shorty time is", options: { A: "Microevolution", B: "revolution", C: "macroevolution", D: "fast revolution" }, answer: "A" },
+            { id: "BIO35", q: "At which stage of cell division does nuclear membrane disappeared?", options: { A: "metaphase stage", B: "anaphase stage", C: "prophase stage", D: "telophase stage" }, answer: "C" },
+            { id: "BIO36", q: "A population is define as the collection of", options: { A: "similar organism that are found in the same habitat", B: "similar organism that breed in the same habitat", C: "similar organism that interbreed freely in the same habitat", D: "different organism in the same habitat" }, answer: "C" },
+            { id: "BIO37", q: "An organism X lives entirely on the waste product of another organism Y, in this association is a", options: { A: "symbiont", B: "commensal", C: "saprophyte", D: "parasite" }, answer: "B" },
+            { id: "BIO38", q: "If a 26 year old blind man married a young one-eye woman and they have four children, how many of them will be blind like their father?", options: { A: "All", B: "None", C: "3", D: "2" }, answer: "B" },
+            { id: "BIO39", q: "What is the genetic ration of F2 generation if members of F1 generation (all heterozygote) in a monohybrid crossing are crossed?", options: { A: "1:2:1", B: "1:3", C: "1:1:2", D: "2:2:1" }, answer: "A" },
+            { id: "BIO40", q: "Which of the following is not a consequence of mitosis?", options: { A: "Genetic stability", B: "Genetic variation", C: "Cell replacement", D: "Regeneration" }, answer: "B" },
+            { id: "BIO41", q: "Which of the following statement is not true about symbiosis", options: { A: "symbiont must be living", B: "it is an association of give and take", C: "is an association between two similar species", D: "symbionts derived mutual benefit" }, answer: "C" },
+            { id: "BIO42", q: "Which year did Darwin's voyage begin?", options: { A: "1991", B: "1821", C: "1891", D: "1831" }, answer: "D" },
+            { id: "BIO43", q: "....founded the science of paleontology", options: { A: "Charles Darwin", B: "Isaac Newton", C: "Georges Curvier", D: "Theodore Schwann" }, answer: "C" },
+            { id: "BIO44", q: "When did Darwin publish origin of species by means of natural selection?", options: { A: "1839", B: "1959", C: "1939", D: "1859" }, answer: "D" },
+            { id: "BIO45", q: "An evidence of evolution where the DNA of a currently living organism is compared with the dead remains of the ancestor is", options: { A: "radiometric dating", B: "fossil evidence", C: "experimental evidence", D: "DNA evidence" }, answer: "D" },
+            { id: "BIO46", q: "Normally a character shown by an organism is due to the effect of", options: { A: "hormones and chromosomes", B: "chromosomes", C: "genes", D: "genes and environment" }, answer: "D" },
+            { id: "BIO47", q: "Choose the sequence which represents the correct order in food chain", options: { A: "grass, snake, toad, grasshopper, hawk", B: "grass, grasshopper, toad, snake, hawk", C: "grass, grasshopper, snake, toad, hawk", D: "grass, toad, snake, grasshopper, hawk" }, answer: "B" },
+            { id: "BIO48", q: "What is the genetic ratio of a cross between a homozygous tall plant and a homozygous dwarf plant?", options: { A: "0 tall: 4 short", B: "3 tall: 1 tall", C: "4 tall: 0 short", D: "2 short 2 tall" }, answer: "C" },
+            { id: "BIO49", q: "Fusion of similar gametes is called", options: { A: "heterogamy", B: "oogamy", C: "isogamy", D: "anisogamy" }, answer: "C" },
+            { id: "BIO50", q: "Which of this is not part of protoplasm?", options: { A: "Nucleus", B: "Vacuole", C: "cytoplasm", D: "chloroplast" }, answer: "B" },
+            { id: "BIO51", q: "In savanna ecosystem, the abiotic factors include", options: { A: "legumes, temperature and sandy soil", B: "water, temperature and soil", C: "minerals, oxygen and reptiles", D: "water, soil and grasses" }, answer: "B" },
+            { id: "BIO52", q: "When the two alleles present in an organism are of the same type, the genotype is described as", options: { A: "homologous", B: "homozygous", C: "heterozygous", D: "heterogamous" }, answer: "B" },
+            { id: "BIO53", q: "A relationship between living organisms which of mutual benefit is", options: { A: "parasitism", B: "saprophytism", C: "symbiosis", D: "commensalism" }, answer: "C" },
+            { id: "BIO54", q: "The hereditary in the cell is known as", options: { A: "RNA", B: "DNA", C: "ADP", D: "ATP" }, answer: "B" },
+            { id: "BIO55", q: "Which process shapes the evolution of living organisms?", options: { A: "mutation", B: "genetic drift", C: "sexual selection", D: "natural selection" }, answer: "D" },
+            { id: "BIO56", q: "A process whereby organisms male or female choose a male with desirable qualities is", options: { A: "mate choice", B: "marriage", C: "sexual selection", D: "gene flow" }, answer: "C" },
+            { id: "BIO57", q: "If a tall man (TT) marries a dwarf woman (tt) and they have four male children, their offspring will be", options: { A: "all short", B: "three short and one tall", C: "two short and two tall", D: "all tall" }, answer: "D" },
+            { id: "BIO58", q: "The characters by which an organisms is recognized are termed its", options: { A: "phenotype", B: "genotype", C: "physiology", D: "anatomy" }, answer: "A" },
+            { id: "BIO59", q: "Where is energy produced in the cell?", options: { A: "nucleus", B: "lysosome", C: "chloroplast", D: "mitochondria" }, answer: "D" },
+            { id: "BIO60", q: "A plant which has a horizontal underground stem is", options: { A: "rhizome", B: "corm", C: "tuber", D: "bulb" }, answer: "A" },
+            { id: "BIO61", q: "Respiration takes places in the", options: { A: "lungs", B: "skin", C: "gills", D: "mitochondria" }, answer: "D" },
+            { id: "BIO62", q: "What is the term used for a genotype consisting of two identical genes for a specific characteristics", options: { A: "phenotype", B: "genotype", C: "homozygote", D: "allele" }, answer: "C" },
+            { id: "BIO63", q: "The Mendel's second law is the law of", options: { A: "independent assortment of gene", B: "segregation of genes", C: "mutation of genes", D: "independent of gene" }, answer: "A" },
+            { id: "BIO64", q: "During cell division, the two strands of chromosome are joined at a point called", options: { A: "spindle", B: "chromatids", C: "centromere", D: "aster" }, answer: "C" },
+            { id: "BIO65", q: "The branch of biology that deals with the study of function of organism is", options: { A: "philosophy", B: "ecology", C: "hydrology", D: "physiology" }, answer: "D" },
+            { id: "BIO66", q: "Which class of food is converted to glycogen?", options: { A: "protein", B: "vitamins", C: "mineral salt", D: "carbohydrates" }, answer: "D" },
+            { id: "BIO67", q: "Which organism use flame cells for excretion?", options: { A: "protists", B: "planarians", C: "Pisces", D: "insects" }, answer: "B" },
+            { id: "BIO68", q: "A form of sexual reproduction whereby two nuclei lie side by side to exchange nuclear materials is", options: { A: "fission", B: "concubine", C: "sex combination", D: "conjugation" }, answer: "D" },
+            { id: "BIO69", q: "The ability to develop mechanisms of coping with challenges is", options: { A: "resistance", B: "competition", C: "adaptation", D: "familiarization" }, answer: "C" },
+            { id: "BIO70", q: "In an organism where the 2n number chromosome is 16, the number of chromosomes in each gamete cell will be", options: { A: "32", B: "16", C: "8", D: "4" }, answer: "C" },
+            { id: "BIO71", q: "The branch of biology that deals with the study of cells is called", options: { A: "mycology", B: "phenology", C: "cytology", D: "phytology" }, answer: "C" },
+            { id: "BIO72", q: "Where in a cell does DNA occurs?", options: { A: "somatic cells", B: "nucleus", C: "nucleolus", D: "sex cells" }, answer: "B" },
+            { id: "BIO73", q: "The number of chromosomes in the somatic cells of man are", options: { A: "22 pairs", B: "on pairs", C: "23 pairs", D: "46 pairs" }, answer: "C" },
+            { id: "BIO74", q: "Which of these stages is not part of cell cycle?", options: { A: "meiosis", B: "mitosis", C: "cell division", D: "interphase" }, answer: "A" },
+            { id: "BIO75", q: "In an ecosystem, the least efficient energy transfer link is from", options: { A: "producer to primary consumer", B: "sun to producer", C: "primary consumer to secondary consumer", D: "secondary consumers to the decomposers" }, answer: "B" },
+            { id: "BIO76", q: "Lichen is an example of", options: { A: "a saprophytic organism", B: "a symbiotic organism", C: "an epiphytic plants", D: "a carnivorous organism" }, answer: "B" },
+            { id: "BIO77", q: "The correct scientific term for the process whereby gametes are formed is", options: { A: "oogenesis", B: "spermatogenesis", C: "gametogenesis", D: "diagenesis" }, answer: "C" },
+            { id: "BIO78", q: "The movements in plant is called", options: { A: "tropism", B: "growth movement", C: "irritability", D: "taxis" }, answer: "A" },
+            { id: "BIO79", q: "Movements of plants towards light is called", options: { A: "tropism", B: "nepotism", C: "phototropism", D: "geotropism" }, answer: "C" },
+            { id: "BIO80", q: "The process of breaking down food in the presence of oxygen to release energy is termed", options: { A: "phosphorylation", B: "oxidation", C: "oxygenation", D: "deoxygenation" }, answer: "B" }
+        ];
+
         // Mock historical data on start
         let testSubmissions = [
-            { id: "S-1042", user: "Alexander Smith", type: "Exam", score: 172, percentage: 86, grade: "Excellent", timerLeft: "12:15" },
-            { id: "S-1043", user: "Chioma Nduka", type: "Practice", score: 154, percentage: 77, grade: "Very Good", timerLeft: "Self-Paced" },
-            { id: "S-1044", user: "Liam Sterling", type: "Exam", score: 98, percentage: 49, grade: "Fail", timerLeft: "00:00" },
-            { id: "S-1045", user: "Fatima Yusuf", type: "Memory Boost", score: 86, percentage: 95, grade: "Outstanding", timerLeft: "Self-Paced" }
+            { id: "S-1042", user: "Alexander Smith", type: "COS101 Exam", score: 172, percentage: 86, grade: "Excellent", timerLeft: "12:15" },
+            { id: "S-1043", user: "Chioma Nduka", type: "CMP101 Practice", score: 68, percentage: 75, grade: "Very Good", timerLeft: "Self-Paced" },
+            { id: "S-1044", user: "Liam Sterling", type: "COS101 Exam", score: 98, percentage: 49, grade: "Fail", timerLeft: "00:00" },
+            { id: "S-1045", user: "Fatima Yusuf", type: "BIO101 Practice", score: 152, percentage: 95, grade: "Outstanding", timerLeft: "Self-Paced" }
         ];
 
         // System Initialization
@@ -756,6 +855,37 @@
             bindEvents();
             showScreen('screen-login');
         });
+
+        // Interactive Course Selection handler
+        function selectCourse(courseId) {
+            activeCourse = courseId;
+            
+            // Re-map border highlights on buttons
+            const btnIds = ['COS101', 'CMP101', 'BIO101'];
+            btnIds.forEach(id => {
+                const btn = document.getElementById(`btn-course-${id}`);
+                const title = btn.querySelector('span:nth-child(1)');
+                const qs = btn.querySelector('span:nth-child(3)');
+                
+                if (id === courseId) {
+                    btn.className = "text-left p-4 rounded-2xl border-2 border-brand-500 bg-brand-50 dark:bg-brand-900/20 transition-all";
+                    title.className = "block font-bold text-lg text-brand-700 dark:text-brand-300";
+                    qs.className = "block text-xs font-semibold mt-2 text-brand-600 dark:text-brand-400";
+                } else {
+                    btn.className = "text-left p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 hover:border-brand-300 transition-all bg-white dark:bg-slate-950";
+                    title.className = "block font-bold text-lg text-slate-900 dark:text-white";
+                    qs.className = "block text-xs font-semibold mt-2 text-slate-500 dark:text-slate-400";
+                }
+            });
+            
+            // Adjust dashboard limits display
+            let totalQs = 100;
+            if(courseId === 'CMP101') totalQs = 45;
+            if(courseId === 'BIO101') totalQs = 80;
+            
+            document.getElementById('dash-total-qs').textContent = `${totalQs} MCQs`;
+            document.getElementById('dash-max-score').textContent = `Up to ${totalQs * 2}`;
+        }
 
         // Custom Confirm Dialog (Fully runs on sandboxed iframes)
         function showCustomConfirm(title, description, onConfirm, onCancel = null) {
@@ -821,10 +951,6 @@
             });
 
             // Home Controls
-            document.getElementById('start-exam-btn').addEventListener('click', () => startQuiz('exam'));
-            document.getElementById('start-practice-btn').addEventListener('click', () => startQuiz('practice'));
-            document.getElementById('start-memory-btn').addEventListener('click', () => startQuiz('memory'));
-            
             document.getElementById('logout-btn').addEventListener('click', logout);
             document.getElementById('show-history-btn').addEventListener('click', () => showHistoryScreen());
             document.getElementById('back-from-history-btn').addEventListener('click', () => showScreen('screen-home'));
@@ -994,26 +1120,27 @@
             updateNavigationGrid();
         }
 
-        // Start Quiz Session
+        // Start Quiz Session pulling from active course
         function startQuiz(modeStr) {
-            showLoader("Setting up Simulator", "Configuring question engines and data structures.");
+            showLoader("Setting up Simulator", `Loading ${activeCourse} framework limits...`);
             
             currentMode = modeStr;
-            isExamMode = (modeStr === 'exam'); // Exam mode uses strict rules, practice & memory are self-paced
+            isExamMode = (modeStr === 'exam'); 
 
             currentQuizIndex = 0;
             userSelectedAnswers = {};
             flaggedQuestions = {};
 
-            // Determine which pool to use
+            // Dynamic Pool Extraction
             let pool = [];
-            if (modeStr === 'memory') {
-                pool = JSON.parse(JSON.stringify(memoryBoostQuestions)); // 45 questions
-            } else {
-                pool = JSON.parse(JSON.stringify(masterQuestions)); // 100 questions
+            if (activeCourse === 'COS101') {
+                pool = JSON.parse(JSON.stringify(masterQuestions)); // 100 Qs
+            } else if (activeCourse === 'CMP101') {
+                pool = JSON.parse(JSON.stringify(memoryBoostQuestions)); // 45 Qs
+            } else if (activeCourse === 'BIO101') {
+                pool = JSON.parse(JSON.stringify(bio101Questions)); // 80 Qs
             }
 
-            // Shuffle if enabled
             if (shuffleEnabled) {
                 for (let i = pool.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -1026,21 +1153,15 @@
             const badgeMode = document.getElementById('badge-mode');
             const timerWrapper = document.getElementById('exam-timer-wrapper');
 
-            // Setup UI dynamically based on mode
             if (isExamMode) {
                 badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
-                badgeMode.textContent = "Exam Mode";
+                badgeMode.textContent = `${activeCourse} - Exam Mode`;
                 timerWrapper.classList.remove('hidden');
                 examTimeRemaining = timerConfig * 60;
                 startTimerLoop();
-            } else if (modeStr === 'practice') {
+            } else {
                 badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
-                badgeMode.textContent = "Practice Mode";
-                timerWrapper.classList.add('hidden');
-                if (examTimerInterval) clearInterval(examTimerInterval);
-            } else if (modeStr === 'memory') {
-                badgeMode.className = "px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wider bg-cyan-50 text-cyan-600 dark:bg-cyan-950/40 dark:text-cyan-400";
-                badgeMode.textContent = "Memory Boost";
+                badgeMode.textContent = `${activeCourse} - Practice Mode`;
                 timerWrapper.classList.add('hidden');
                 if (examTimerInterval) clearInterval(examTimerInterval);
             }
@@ -1119,7 +1240,7 @@
                         optStyle += "border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300";
                     }
                 } else {
-                    // Practice / Memory Boost logic: Show correct/incorrect immediately
+                    // Practice logic: Show correct/incorrect immediately
                     const alreadyAnswered = selectedAnswer !== undefined;
                     
                     if (alreadyAnswered) {
@@ -1156,7 +1277,7 @@
                 expPanel.classList.remove('hidden');
                 document.getElementById('explanation-text').innerHTML = `
                     <strong>Correct Answer Option ${q.answer}</strong>. 
-                    This item validates your knowledge of computer fundamentals, generation specs, and processing mechanisms. Option ${q.answer} matches the official answers key catalog.
+                    This item validates your knowledge of ${activeCourse} frameworks and definitions. Option ${q.answer} matches the official answers key catalog perfectly.
                 `;
             } else {
                 expPanel.classList.add('hidden');
@@ -1168,7 +1289,7 @@
         function handleOptionSelection(optionKey) {
             const q = quizPool[currentQuizIndex];
             
-            // In practice/memory modes, don't allow changing answer once selected
+            // In practice modes, don't allow changing answer once selected
             if (!isExamMode && userSelectedAnswers[q.id] !== undefined) {
                 return; 
             }
@@ -1261,15 +1382,13 @@
             const secLeft = examTimeRemaining % 60;
             const timerUsed = isExamMode ? `${minLeft}:${secLeft.toString().padStart(2, '0')}` : "Self-Paced";
             
-            // Format mode title for logs
-            let logTypeTitle = "Exam";
-            if (currentMode === 'practice') logTypeTitle = "Practice";
-            if (currentMode === 'memory') logTypeTitle = "Memory Boost";
+            // Format mode title for logs dynamically
+            let logTypeTitle = isExamMode ? "Exam" : "Practice";
 
             const submissionRecord = {
                 id: `S-${Math.floor(1000 + Math.random() * 9000)}`,
                 user: currentUser ? currentUser.username : "Anonymous Candidate",
-                type: logTypeTitle,
+                type: `${activeCourse} ${logTypeTitle}`,
                 score: score,
                 percentage: percentage,
                 grade: grade,
@@ -1429,9 +1548,8 @@
                 
                 // Color Code for Badges
                 let typeBadgeClasses = "bg-slate-100 text-slate-400 dark:bg-slate-800";
-                if (record.type === 'Exam') typeBadgeClasses = "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
-                else if (record.type === 'Practice') typeBadgeClasses = "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
-                else if (record.type === 'Memory Boost') typeBadgeClasses = "bg-cyan-50 text-cyan-600 dark:bg-cyan-950/40 dark:text-cyan-400";
+                if (record.type.includes('Exam')) typeBadgeClasses = "bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400";
+                else if (record.type.includes('Practice')) typeBadgeClasses = "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400";
 
                 card.innerHTML = `
                     <div class="space-y-1">
