@@ -234,12 +234,235 @@
             <!-- Quick Links -->
             <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
                 <p class="text-xs text-slate-500">Need to check candidate results or edit parameters?</p>
-                <div class="flex items-center gap-3">
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- CMP 101 NOTES BUTTON -->
+                    <button id="show-notes-btn" class="px-4 py-2 bg-brand-50 dark:bg-brand-900/40 hover:bg-brand-100 text-brand-700 dark:text-brand-300 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all border border-brand-200 dark:border-brand-800">
+                        <i data-lucide="book-open" class="w-4 h-4"></i> CMP101 Study Notes
+                    </button>
                     <button id="trigger-admin-btn" class="px-4 py-2 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
                         <i data-lucide="shield-check" class="w-4 h-4 text-brand-500"></i> Admin Dashboard
                     </button>
                     <button id="show-history-btn" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
                         <i data-lucide="history" class="w-4 h-4 text-indigo-500"></i> Your Score History
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LEARNING NOTES SCREEN ================= -->
+        <section id="screen-notes" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 animate-fade-in">
+            <!-- Header -->
+            <div class="lg:col-span-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button onclick="showScreen('screen-home')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-600 dark:text-slate-200 transition-all flex-shrink-0">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </button>
+                    <div>
+                        <h2 class="text-2xl font-extrabold tracking-tight">CMP 101 Notes</h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Comprehensive Introduction to Computer Science</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Col: Module Navigation -->
+            <div class="lg:col-span-3 space-y-2">
+                <button onclick="showModule(1)" id="tab-mod-1" class="w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-brand-600 text-white shadow-md flex justify-between items-center group">Module 1: Introduction <i data-lucide="chevron-right" class="w-4 h-4 opacity-100 transition-opacity"></i></button>
+                <button onclick="showModule(2)" id="tab-mod-2" class="w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-brand-300 text-slate-700 dark:text-slate-300 flex justify-between items-center group">Module 2: Hardware <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 transition-opacity"></i></button>
+                <button onclick="showModule(3)" id="tab-mod-3" class="w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-brand-300 text-slate-700 dark:text-slate-300 flex justify-between items-center group">Module 3: Software <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 transition-opacity"></i></button>
+                <button onclick="showModule(4)" id="tab-mod-4" class="w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-brand-300 text-slate-700 dark:text-slate-300 flex justify-between items-center group">Module 4: Data <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 transition-opacity"></i></button>
+                <button onclick="showModule(5)" id="tab-mod-5" class="w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-brand-300 text-slate-700 dark:text-slate-300 flex justify-between items-center group">Module 5: Networks <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 transition-opacity"></i></button>
+            </div>
+
+            <!-- Right Col: Module Content Display -->
+            <div class="lg:col-span-9 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between min-h-[500px]">
+                
+                <div class="flex-1 space-y-6">
+                    <!-- Module 1 Content -->
+                    <div id="content-mod-1" class="module-content animate-fade-in">
+                        <h3 class="text-2xl font-extrabold text-brand-600 dark:text-brand-400 mb-6 flex items-center gap-3">
+                            <div class="p-2 bg-brand-50 dark:bg-brand-900/30 rounded-lg"><i data-lucide="monitor" class="w-6 h-6"></i></div>
+                            Module 1: Introduction to Computers
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">A <strong>computer</strong> is an advanced electronic device that takes in raw data as input, processes it using a set of instructions (programs), stores the results, and outputs meaningful information.</p>
+                        
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-3 border-l-4 border-brand-500 pl-3">The Four Primary Functions (IPSO)</h4>
+                        <ol class="list-decimal pl-5 space-y-2 text-slate-700 dark:text-slate-300 mb-6">
+                            <li><strong>Input:</strong> Gathering data (e.g., typing on a keyboard).</li>
+                            <li><strong>Processing:</strong> Manipulating data into information (handled by the CPU).</li>
+                            <li><strong>Storage:</strong> Saving data and information for later use.</li>
+                            <li><strong>Output:</strong> Displaying the processed information (e.g., on a monitor).</li>
+                        </ol>
+
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-3 border-l-4 border-brand-500 pl-3">The Five Generations of Computers</h4>
+                        <p class="text-slate-700 dark:text-slate-300 mb-4">Computers have evolved dramatically over the decades, categorized into "generations" based on the core technology powering them:</p>
+                        <ul class="space-y-4 text-slate-700 dark:text-slate-300">
+                            <li class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <strong>First Generation (1940s–1950s):</strong> Powered by <strong>Vacuum Tubes</strong>. They were massive (taking up entire rooms), expensive, generated massive heat, and used punch cards for input. <em>(Example: ENIAC)</em>
+                            </li>
+                            <li class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <strong>Second Generation (1950s–1960s):</strong> Powered by <strong>Transistors</strong>. This made computers smaller, faster, cheaper, and more energy-efficient than their predecessors.
+                            </li>
+                            <li class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <strong>Third Generation (1960s–1970s):</strong> Powered by <strong>Integrated Circuits (ICs)</strong>. Transistors were miniaturized and placed on silicon chips, drastically increasing speed and efficiency.
+                            </li>
+                            <li class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <strong>Fourth Generation (1971–Present):</strong> Powered by <strong>Microprocessors</strong>. Thousands of integrated circuits were built onto a single silicon chip. This era birthed the PC.
+                            </li>
+                            <li class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                <strong>Fifth Generation (Present & Future):</strong> Powered by <strong>Artificial Intelligence (AI)</strong> and <strong>Quantum Computing</strong>.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Module 2 Content -->
+                    <div id="content-mod-2" class="module-content hidden animate-fade-in">
+                        <h3 class="text-2xl font-extrabold text-brand-600 dark:text-brand-400 mb-6 flex items-center gap-3">
+                            <div class="p-2 bg-brand-50 dark:bg-brand-900/30 rounded-lg"><i data-lucide="cpu" class="w-6 h-6"></i></div>
+                            Module 2: Computer Hardware
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">Hardware refers to the physical, tangible parts of the computer that you can touch and see.</p>
+                        
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-3 border-l-4 border-brand-500 pl-3">1. The Central Processing Unit (CPU)</h4>
+                        <p class="text-slate-700 dark:text-slate-300 mb-3">Often called the "brain" of the computer, the CPU executes instructions. It has three main parts:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 mb-6">
+                            <li><strong>ALU (Arithmetic Logic Unit):</strong> Performs all mathematical calculations (addition, subtraction) and logical comparisons (AND, OR, NOT).</li>
+                            <li><strong>CU (Control Unit):</strong> Directs the flow of data. It fetches, decodes, and executes instructions from memory.</li>
+                            <li><strong>Registers:</strong> Tiny, ultra-fast storage locations inside the CPU used during processing.</li>
+                        </ul>
+
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-3 border-l-4 border-brand-500 pl-3">2. Computer Memory</h4>
+                        <p class="text-slate-700 dark:text-slate-300 mb-3">Memory is where data is kept while the computer is running.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 mb-6">
+                            <li><strong>Primary Storage (Main Memory):</strong>
+                                <ul class="list-circle pl-5 mt-2 space-y-1">
+                                    <li><strong>RAM (Random Access Memory):</strong> Volatile memory. Holds data temporarily.</li>
+                                    <li><strong>ROM (Read-Only Memory):</strong> Non-volatile memory. Holds crucial boot-up system instructions.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Secondary Storage:</strong> Long-term, non-volatile storage. (HDDs, SSDs, USB flash drives).</li>
+                        </ul>
+
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-8 mb-3 border-l-4 border-brand-500 pl-3">3. Input & Output (I/O) Devices</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-sm text-slate-700 dark:text-slate-300 mt-2 border border-slate-200 dark:border-slate-700">
+                                <thead>
+                                    <tr class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">
+                                        <th class="p-3 border-b border-slate-200 dark:border-slate-700">Device Type</th>
+                                        <th class="p-3 border-b border-slate-200 dark:border-slate-700">Function</th>
+                                        <th class="p-3 border-b border-slate-200 dark:border-slate-700">Examples</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700 font-bold">Input</td>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700">Sends data <em>into</em> the computer.</td>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700">Keyboard, Mouse, Scanner</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700 font-bold">Output</td>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700">Sends information <em>out of</em> the computer.</td>
+                                        <td class="p-3 border-b border-slate-200 dark:border-slate-700">Monitor, Printer, Speaker</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 Content -->
+                    <div id="content-mod-3" class="module-content hidden animate-fade-in">
+                        <h3 class="text-2xl font-extrabold text-brand-600 dark:text-brand-400 mb-6 flex items-center gap-3">
+                            <div class="p-2 bg-brand-50 dark:bg-brand-900/30 rounded-lg"><i data-lucide="layers" class="w-6 h-6"></i></div>
+                            Module 3: Computer Software
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">Software is the set of intangible instructions that tells the hardware exactly what to do. You cannot physically touch software.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">System Software</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">The foundational software that manages the computer's hardware and provides a platform for other software to run.</p>
+                                <ul class="list-disc pl-4 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                                    <li><strong>Operating Systems (OS):</strong> Windows, macOS, Linux, Android.</li>
+                                    <li><strong>Utility Programs:</strong> Antivirus software, file backup tools.</li>
+                                    <li><strong>Device Drivers:</strong> Small programs that allow the OS to communicate with specific hardware.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Application Software</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Programs designed to help the end-user perform specific tasks.</p>
+                                <ul class="list-disc pl-4 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                                    <li><strong>Productivity:</strong> Microsoft Word, Excel, PowerPoint.</li>
+                                    <li><strong>Browsers:</strong> Google Chrome, Mozilla Firefox.</li>
+                                    <li><strong>Entertainment:</strong> Video games, Spotify, Netflix.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 Content -->
+                    <div id="content-mod-4" class="module-content hidden animate-fade-in">
+                        <h3 class="text-2xl font-extrabold text-brand-600 dark:text-brand-400 mb-6 flex items-center gap-3">
+                            <div class="p-2 bg-brand-50 dark:bg-brand-900/30 rounded-lg"><i data-lucide="binary" class="w-6 h-6"></i></div>
+                            Module 4: Data Representation
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">How does a computer actually read all this software? Through <strong>Binary</strong>.</p>
+                        <p class="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">Computers do not understand human languages; they only understand electricity being "ON" or "OFF". We represent this using the <strong>Binary Number System (Base 2)</strong>, which consists of only two digits: <strong>0</strong> (Off) and <strong>1</strong> (On).</p>
+                        
+                        <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 mb-8">
+                            <li><strong>Bit (Binary Digit):</strong> The smallest unit of data in computing (a single 0 or 1).</li>
+                            <li><strong>Byte:</strong> A grouping of <strong>8 bits</strong>. One byte is enough to represent a single character, like the letter 'A' or the number '7'.</li>
+                        </ul>
+
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-6 mb-4 border-l-4 border-brand-500 pl-3">Data Size Hierarchy:</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+                                <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">1 KB</span>
+                                <span class="text-xs text-slate-500">1,024 Bytes</span>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+                                <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">1 MB</span>
+                                <span class="text-xs text-slate-500">1,024 KB</span>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+                                <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">1 GB</span>
+                                <span class="text-xs text-slate-500">1,024 MB</span>
+                            </div>
+                            <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+                                <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">1 TB</span>
+                                <span class="text-xs text-slate-500">1,024 GB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 Content -->
+                    <div id="content-mod-5" class="module-content hidden animate-fade-in">
+                        <h3 class="text-2xl font-extrabold text-brand-600 dark:text-brand-400 mb-6 flex items-center gap-3">
+                            <div class="p-2 bg-brand-50 dark:bg-brand-900/30 rounded-lg"><i data-lucide="network" class="w-6 h-6"></i></div>
+                            Module 5: Introduction to Computer Networks
+                        </h3>
+                        <p class="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">A network is two or more computers connected together to share resources (like files, printers, or an internet connection).</p>
+                        
+                        <div class="space-y-4">
+                            <div class="p-5 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800/50 rounded-2xl">
+                                <h4 class="text-lg font-bold text-indigo-900 dark:text-indigo-300 flex items-center gap-2 mb-2"><i data-lucide="home" class="w-5 h-5"></i> LAN (Local Area Network)</h4>
+                                <p class="text-sm text-indigo-800 dark:text-indigo-200">Covers a small geographic area, like a single home, office, or school building.</p>
+                            </div>
+                            
+                            <div class="p-5 bg-brand-50 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-800/50 rounded-2xl">
+                                <h4 class="text-lg font-bold text-brand-900 dark:text-brand-300 flex items-center gap-2 mb-2"><i data-lucide="globe" class="w-5 h-5"></i> WAN (Wide Area Network)</h4>
+                                <p class="text-sm text-brand-800 dark:text-brand-200">Covers a large geographic area, connecting multiple LANs across cities or countries. The <strong>Internet</strong> is the largest WAN in the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Navigation Buttons -->
+                <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                    <button id="btn-prev-mod" onclick="navModule(-1)" disabled class="px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl text-sm font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-2">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Previous
+                    </button>
+                    <button id="btn-next-mod" onclick="navModule(1)" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 shadow-md">
+                        Next <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -573,6 +796,9 @@
         let quizPool = []; 
         let userSelectedAnswers = {}; 
         let flaggedQuestions = {}; 
+
+        // Learning Notes State
+        let currentLearningModule = 1;
 
         // -------------------------------------------------------------
         // COURSE 1: COS101 (100 Questions Data Bank)
@@ -956,6 +1182,12 @@
             document.getElementById('back-from-history-btn').addEventListener('click', () => showScreen('screen-home'));
             document.getElementById('clear-history-btn').addEventListener('click', handleClearHistory);
             
+            // Learning Notes Flow
+            document.getElementById('show-notes-btn').addEventListener('click', () => {
+                showScreen('screen-notes');
+                showModule(1);
+            });
+
             // Exam Controls
             document.getElementById('prev-q-btn').addEventListener('click', navigatePrevious);
             document.getElementById('next-q-btn').addEventListener('click', navigateNext);
@@ -982,9 +1214,49 @@
             document.getElementById('restart-home-btn').addEventListener('click', () => showScreen('screen-home'));
         }
 
+        // Module Navigation Control
+        function showModule(modNum) {
+            currentLearningModule = modNum;
+            
+            for(let i = 1; i <= 5; i++) {
+                const tab = document.getElementById(`tab-mod-${i}`);
+                const content = document.getElementById(`content-mod-${i}`);
+                
+                // Safely grab the icon (it might be an SVG after Lucide runs, or an <i> before)
+                const icon = tab.querySelector('svg') || tab.querySelector('i');
+                
+                if(i === modNum) {
+                    tab.className = "w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-brand-600 text-white shadow-md flex justify-between items-center group";
+                    if(icon) {
+                        icon.classList.remove('opacity-0', 'opacity-70');
+                        icon.classList.add('opacity-100');
+                    }
+                    content.classList.remove('hidden');
+                } else {
+                    tab.className = "w-full text-left p-3.5 rounded-xl font-bold text-sm transition-all bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-brand-300 text-slate-700 dark:text-slate-300 flex justify-between items-center group";
+                    if(icon) {
+                        icon.classList.remove('opacity-100', 'opacity-70');
+                        icon.classList.add('opacity-0');
+                    }
+                    content.classList.add('hidden');
+                }
+            }
+            
+            document.getElementById('btn-prev-mod').disabled = (modNum === 1);
+            document.getElementById('btn-next-mod').disabled = (modNum === 5);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function navModule(direction) {
+            let nextMod = currentLearningModule + direction;
+            if(nextMod >= 1 && nextMod <= 5) {
+                showModule(nextMod);
+            }
+        }
+
         // Screen Routing
         function showScreen(screenId) {
-            const screens = ['screen-login', 'screen-home', 'screen-exam', 'screen-results', 'screen-review', 'screen-history', 'screen-admin'];
+            const screens = ['screen-login', 'screen-home', 'screen-exam', 'screen-results', 'screen-review', 'screen-history', 'screen-admin', 'screen-notes'];
             screens.forEach(id => {
                 const el = document.getElementById(id);
                 if (id === screenId) {
